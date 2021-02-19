@@ -24,3 +24,6 @@ class Champion:
     def guard(self, attack_damage):
         print("Get Damage %d at %f" % (attack_damage,self.env.now))
         yield self.env.timeout(0)
+    
+    def move(self):
+        NotImplemented
