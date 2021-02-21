@@ -1,16 +1,21 @@
 import simpy
+from .search import find_proximate
 
 class Champion:
-    def __init__(self, env):
+    def __init__(self, env, field):
         self.env=env
         self.hp=100
         self.mp=0
+        self.max_hp=100
+        self.max_mp=0
         self.heist=550
         self.attack_damage=10
         self.critical=25
         self.attack_speed=1
         self.action=self.attack
         self.target=None
+        self.pos=None
+        self.field=field
 
     def attack(self):
         while True:
@@ -27,3 +32,9 @@ class Champion:
     
     def move(self):
         NotImplemented
+    
+    def search(self):
+        distance, result = find_proximate(self.pos, self.field)
+        if result:
+            self.target = result[0].champion
+        yield self.env.timeout(0)
