@@ -1,19 +1,26 @@
-from action.champion import Champion
-from app import field
+from action.champion import ChampionAction
+from app import field, champion
 import simpy
 
 env = simpy.Environment()
-f = field.create_field()
-a = Champion(env,f)
-b = Champion(env,f)
-f[0][0].champion = a
-f[7][6].champion = b
-a.pos = [0,0]
-b.pos = [7,6]
-env.process(a.search())
-env.process(b.search())
+f = field.Field()
+action = ChampionAction(env, f)
+a = champion.Champion("a")
+b = champion.Champion("b")
+
+f.assign(a,[0,0])
+f.assign(b,[7,6])
+
+a.action = action.search
+b.action = action.search
+
+env.process(a.action(a))
+env.process(b.action(b))
+
 b.attack_speed=2
-env.process(a.action())
-env.process(b.action())
+a.action = action.attack
+b.action = action.attack
+env.process(a.action(a))
+env.process(b.action(b))
 
 env.run(until=5)

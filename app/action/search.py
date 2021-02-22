@@ -1,9 +1,8 @@
 import copy
 
-def find_proximate(v, field):
+def find_proximate(cur):
     proximate = {"distance": None, "target": []}
-    cur = field[v[0]][v[1]]
-    visited = [False for _ in range(len(field[0])*len(field))]
+    visited = {}
     search_results = _bfs_champion_search(cur, visited)
     
     for r in search_results:
@@ -25,7 +24,7 @@ def find_proximate(v, field):
 def _bfs_champion_search(node, visited):
     count = 0
     result = []
-    if visited[node.id]:
+    if node.id in visited.keys():
         return result
     visited[node.id] = True
 
@@ -33,7 +32,7 @@ def _bfs_champion_search(node, visited):
     find = []
     while nodes:
         n = nodes.pop(0)
-        if visited[n[0].id]:
+        if n[0].id in visited.keys() and visited[n[0].id]:
             continue
         visited[n[0].id] = True
         n[1].append(n[0])
