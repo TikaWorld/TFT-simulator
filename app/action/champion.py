@@ -1,10 +1,24 @@
 import simpy
-from .search import find_proximate
+from . import search
 
 class ChampionAction:
     def __init__(self, env, field):
         self.env=env
         self.field=field
+
+    def action(self, champion):
+        while True:
+            if champion.target:
+                distance = search.get_distance(self.field.get_location(champion), champion.target)
+                if distance is None:
+                    champion.target = None
+                elif distance <= champion.range:
+                    yield self.env.process(self.attack(champion))
+                else:
+                    yield self.env.process(self.search(champion))
+                    yield self.env.process(self.move(champion))
+            else:
+                yield self.env.process(self.search(champion))
 
     def attack(self, champion):
         try:
@@ -18,11 +32,13 @@ class ChampionAction:
         print("%s: Get Damage %d at %f" % (champion, attack_damage, self.env.now))
         yield self.env.timeout(0)
     
-    def move(self):
-        NotImplemented
+    def move(self, champion):
+        yield self.env.timeout(0.1)
     
     def search(self, champion):
-        distance, result = find_proximate(self.field.get_location(champion))
+        distance, result = search.find_proximate(self.field.get_location(champion))
         if result:
             champion.target = result[0].champion
-        yield self.env.timeout(0)
+            yield self.env.timeout(0)
+        else:
+            yield self.env.timeout(0.1)

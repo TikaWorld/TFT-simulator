@@ -9,17 +9,10 @@ a = champion.Champion("a")
 b = champion.Champion("b")
 
 f.assign(a,[0,0])
-f.assign(b,[7,6])
+f.assign(b,[1,0])
 
-a.action = action.search
-b.action = action.search
-
-env.process(a.action(a))
-env.process(b.action(b))
-
-b.attack_speed=2
-a.action = action.attack
-b.action = action.attack
+a.action = action.action
+b.action = action.action
 env.process(a.action(a))
 env.process(b.action(b))
 

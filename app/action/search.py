@@ -20,8 +20,21 @@ def find_proximate(cur):
     
     return proximate["distance"], proximate["target"]
 
+def get_distance(cur, champion):
+    proximate = {"distance": None, "target": []}
+    visited = {}
+    search_results = _bfs_champion_search(cur, visited, conflict=False)
+    for r in search_results:
+        target = r[0]
+        path = r[1]
+        distance = len(path)
+        if target.champion==champion:
+            return distance
+        
+    return None
 
-def _bfs_champion_search(node, visited):
+
+def _bfs_champion_search(node, visited, conflict=True):
     count = 0
     result = []
     if node.id in visited.keys():
@@ -38,7 +51,8 @@ def _bfs_champion_search(node, visited):
         n[1].append(n[0])
         if n[0].champion:
             result.append([n[0], n[1]])
-            continue
+            if conflict:
+                continue
         nodes.extend([[c, copy.copy(n[1])] for c in n[0].connect])
     return result
 

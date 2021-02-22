@@ -9,6 +9,7 @@ class Champion(object):
         self.attack_damage=10
         self.critical=25
         self.attack_speed=1
+        self.range=1
         self.action=None
         self.target=None
         self.pos=None
