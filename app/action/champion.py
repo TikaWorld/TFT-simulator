@@ -33,12 +33,22 @@ class ChampionAction:
         yield self.env.timeout(0)
     
     def move(self, champion):
-        yield self.env.timeout(0.1)
-    
+        path = search.get_path(self.field.get_location(champion), champion.target)
+        if not path:
+            raise Exception
+        yield self.env.timeout(250/champion.heist)
+        try:
+            self.field.transfer(champion, path[0])
+            print("%s: Move to %s at %f" %(champion, path[0], self.env.now))
+        except Exception: #Need Define AlreadyArrived Error:
+            print("%s: Move action is canceled by already arrived champion at %f" %(champion, self.env.now))
+        
+
+
     def search(self, champion):
         distance, result = search.find_proximate(self.field.get_location(champion))
         if result:
             champion.target = result[0].champion
             yield self.env.timeout(0)
         else:
-            yield self.env.timeout(0.1)
+            yield self.env.timeout(0.01)

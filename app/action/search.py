@@ -33,6 +33,17 @@ def get_distance(cur, champion):
         
     return None
 
+def get_path(cur, champion):
+    proximate = {"distance": None, "target": []}
+    visited = {}
+    search_results = _bfs_champion_search(cur, visited)
+    for r in search_results:
+        target = r[0]
+        path = r[1]
+        if target.champion==champion:
+            return path
+        
+    return None
 
 def _bfs_champion_search(node, visited, conflict=True):
     count = 0

@@ -41,7 +41,17 @@ class Field:
         self.cell[loc[0]][loc[1]].champion = champ
         self.champion_location[champ] = self.cell[loc[0]][loc[1]]
 
-    
+    def transfer(self, champ, loc_cell):
+        if loc_cell.champion is not None:
+            raise Exception
+        if not champ in self.champion_location:
+            raise Exception
+        if self.champion_location[champ].champion is not champ:
+            raise Exception
+        self.champion_location[champ].champion = None
+        loc_cell.champion = champ
+        self.champion_location[champ] = loc_cell
+
     def release(self, champ):
         if not champ in self.champion_location:
             raise Exception
