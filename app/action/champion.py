@@ -29,7 +29,10 @@ class ChampionAction:
             print('Was interrupted.')
         
     def guard(self, champion, attack_damage):
-        print("%s: Get Damage %d at %f" % (champion, attack_damage, self.env.now))
+        damage_multiplier = 100/(100+champion.armor)
+        reduced_damage = attack_damage*damage_multiplier
+        champion.hp-=reduced_damage
+        print("%s: Get Damage %d at %f" % (champion, reduced_damage, self.env.now))
         yield self.env.timeout(0)
     
     def move(self, champion):

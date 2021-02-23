@@ -1,12 +1,12 @@
 from action.champion import ChampionAction
-from app import field, champion
+import field, champion
 import simpy
 
 env = simpy.Environment()
 f = field.Field()
 action = ChampionAction(env, f)
 a = champion.Champion("a")
-b = champion.Champion("b")
+b = champion.Champion("b") 
 b.heist = 560
 
 f.assign(a,[0,0])
