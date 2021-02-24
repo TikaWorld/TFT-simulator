@@ -1,10 +1,11 @@
 import copy
 
+
 def find_proximate(cur):
     proximate = {"distance": None, "target": []}
     visited = {}
     search_results = _bfs_champion_search(cur, visited)
-    
+
     for r in search_results:
         target = r[0]
         path = r[1]
@@ -17,8 +18,9 @@ def find_proximate(cur):
         elif proximate["distance"] > distance:
             proximate["target"] = [target]
             proximate["distance"] = distance
-    
+
     return proximate["distance"], proximate["target"]
+
 
 def get_distance(cur, champion):
     proximate = {"distance": None, "target": []}
@@ -28,10 +30,11 @@ def get_distance(cur, champion):
         target = r[0]
         path = r[1]
         distance = len(path)
-        if target.champion==champion:
+        if target.champion == champion:
             return distance
-        
+
     return None
+
 
 def get_path(cur, champion):
     proximate = {"distance": None, "target": []}
@@ -40,10 +43,11 @@ def get_path(cur, champion):
     for r in search_results:
         target = r[0]
         path = r[1]
-        if target.champion==champion:
+        if target.champion == champion:
             return path
-        
+
     return None
+
 
 def _bfs_champion_search(node, visited, conflict=True):
     count = 0
@@ -66,4 +70,3 @@ def _bfs_champion_search(node, visited, conflict=True):
                 continue
         nodes.extend([[c, copy.copy(n[1])] for c in n[0].connect])
     return result
-
