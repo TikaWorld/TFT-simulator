@@ -1,6 +1,7 @@
 class Champion(object):
     def __init__(self, name="Dummy"):
         self.name = name
+        self.state = []
         self.max_hp = 100
         self.max_mp = 0
         self.hp = self.max_hp
