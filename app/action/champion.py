@@ -1,6 +1,24 @@
 import simpy
-from app.champion import state
+from app.champion.state import State
 from app.action import search
+from functools import wraps
+
+
+def set_break_status(break_status):
+    def wrapper(func):
+        @wraps(func)
+        def decorator(*args, **kwargs):
+            action_cls = args[0]
+            champion = args[1]
+            for s in break_status:
+                if s in champion.state:
+                    return action_cls.env.timeout(0.01)
+            result = func(*args, **kwargs)
+            return result
+
+        return decorator
+
+    return wrapper
 
 
 class ChampionAction:
@@ -10,8 +28,8 @@ class ChampionAction:
 
     def action(self, champion):
         while True:
-            while champion.state in [state.State.STUN]:
-                yield self.env.timeout(0.1)
+            while State.STUN in champion.state:
+                yield self.env.timeout(0.01)
             if champion.target:
                 distance = search.get_distance(self.field.get_location(champion), champion.target)
                 if distance is None:
@@ -27,22 +45,27 @@ class ChampionAction:
                 champion.action = self.env.process(self.search(champion))
                 yield champion.action
 
+    @set_break_status([State.DISARM, State.STUN, State.AIRBORNE, State.BANISHES])
     def attack(self, champion):
         try:
             yield self.env.timeout(champion.attack_speed)
             print("%s: Attack %s at %f" % (champion, champion.target, self.env.now))
-            yield self.env.process(self.guard(champion.target, champion.attack_damage))
+            yield self.env.process(self.resist(champion.target, champion.attack_damage))
         except simpy.Interrupt:
-            print('%s: Was interrupted.' %champion)
+            print('%s: Was interrupted.' % champion)
 
-    def guard(self, champion, attack_damage):
-        damage_multiplier = 100 / (100 + champion.armor)
+    def resist(self, champion, attack_damage, magic=False):
+        resist_value = champion.armor if not magic else champion.magic_resistance
+        damage_multiplier = 100 / (100 + resist_value)
         reduced_damage = attack_damage * damage_multiplier
         champion.hp -= reduced_damage
         print("%s: Get Damage %d at %f" % (champion, reduced_damage, self.env.now))
         yield self.env.timeout(0)
 
+    @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.ROOT])
     def move(self, champion):
+        if State.ROOT in champion.state:
+            return self.env.timeout(0.01)
         path = search.get_path(self.field.get_location(champion), champion.target)
         if not path:
             raise Exception
