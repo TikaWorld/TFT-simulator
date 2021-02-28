@@ -1,7 +1,7 @@
 from app.champion.state import State
 
 
-class StateAction:
+class StateManager:
     def __init__(self, env, field):
         self.env = env
         self.field = field

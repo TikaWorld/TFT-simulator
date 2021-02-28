@@ -17,3 +17,4 @@ class State(StrEnum):
     ROOT = auto()
     TAUNT = auto()
     BANISHES = auto()
+    DEATH = auto()

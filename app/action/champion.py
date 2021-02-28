@@ -1,4 +1,6 @@
 import simpy
+
+from app.action.state import StateManager
 from app.champion.state import State
 from app.action import search
 from functools import wraps
@@ -12,7 +14,7 @@ def set_break_status(break_status):
             champion = args[1]
             for s in break_status:
                 if s in champion.state:
-                    return action_cls.env.timeout(0.01)
+                    return action_cls.env.timeout(0)
             result = func(*args, **kwargs)
             return result
 
@@ -25,9 +27,16 @@ class ChampionAction:
     def __init__(self, env, field):
         self.env = env
         self.field = field
+        self.state_manager = StateManager(env, field)
 
     def action(self, champion):
         while True:
+            if State.DEATH in champion.state:
+                champion.action = self.env.process(self.death(champion))
+                yield champion.action
+                if State.DEATH in champion.state:
+                    return
+
             while State.STUN in champion.state:
                 yield self.env.timeout(0.01)
             if champion.target:
@@ -49,18 +58,13 @@ class ChampionAction:
     def attack(self, champion):
         try:
             yield self.env.timeout(champion.attack_speed)
+            distance = search.get_distance(self.field.get_location(champion), champion.target)
+            if not distance or distance > champion.range:
+                return
             print("%s: Attack %s at %f" % (champion, champion.target, self.env.now))
-            yield self.env.process(self.resist(champion.target, champion.attack_damage))
+            dmg = champion.target.get_damage(champion.attack_damage)
         except simpy.Interrupt:
-            print('%s: Was interrupted.' % champion)
-
-    def resist(self, champion, attack_damage, magic=False):
-        resist_value = champion.armor if not magic else champion.magic_resistance
-        damage_multiplier = 100 / (100 + resist_value)
-        reduced_damage = attack_damage * damage_multiplier
-        champion.hp -= reduced_damage
-        print("%s: Get Damage %d at %f" % (champion, reduced_damage, self.env.now))
-        yield self.env.timeout(0)
+            print('%s: Attack Was interrupted.' % champion)
 
     @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.ROOT])
     def move(self, champion):
@@ -83,3 +87,11 @@ class ChampionAction:
             yield self.env.timeout(0)
         else:
             yield self.env.timeout(0.01)
+
+    def death(self, champion):
+        if "reborn" in champion.buff.keys():
+            print(champion.buff)
+            return
+        print("%s: Champion is dead at %f" % (champion, self.env.now))
+        self.field.release(champion)
+        yield self.env.timeout(0)
