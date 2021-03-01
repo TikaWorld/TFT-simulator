@@ -1,16 +1,7 @@
 from enum import Enum, auto
 
 
-class StrEnum(str, Enum):
-
-    def __repr__(self):
-        return self.name
-
-    def __str__(self):
-        return self.name
-
-
-class State(StrEnum):
+class State(str, Enum):
     STUN = auto()
     AIRBORNE = auto()
     DISARM = auto()
@@ -18,3 +9,9 @@ class State(StrEnum):
     TAUNT = auto()
     BANISHES = auto()
     DEATH = auto()
+
+    def __repr__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name

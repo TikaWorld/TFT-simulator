@@ -1,4 +1,26 @@
 from app.champion.state import State
+from enum import Enum, auto
+
+
+class Stat(str, Enum):
+    MAX_HP = "max_hp"
+    MAX_MP = "max_mp"
+    MP = "mp"
+    HEIST = "heist"
+    ATTACK = "attack_damage"
+    SPELL = "spell_power"
+    CRITICAL_CHANCE = "critical_strike_chance"
+    CRITICAL_DAMAGE = "critical_strike_damage"
+    RANGE = "range"
+    ARMOR = "armor"
+    MAGIC_RESISTANCE = "magic_resistance"
+    ATTACK_SPEED = "attack_speed"
+
+    def __repr__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
 
 
 class Champion(object):
@@ -27,7 +49,7 @@ class Champion(object):
         resist_value = self.armor if not magic else self.magic_resistance
         damage_multiplier = 100 / (100 + resist_value)
         reduced_damage = attack_damage * damage_multiplier
-        self.hp = max(self.hp-reduced_damage, 0)
+        self.hp = max(self.hp - reduced_damage, 0)
         if not self.hp:
             try:
                 self.action.interrupt()

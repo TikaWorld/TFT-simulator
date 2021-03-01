@@ -1,6 +1,5 @@
 import simpy
 
-from app.action.state import StateManager
 from app.champion.state import State
 from app.action import search
 from functools import wraps
@@ -10,11 +9,11 @@ def set_break_status(break_status):
     def wrapper(func):
         @wraps(func)
         def decorator(*args, **kwargs):
-            action_cls = args[0]
             champion = args[1]
             for s in break_status:
                 if s in champion.state:
-                    return action_cls.env.timeout(0)
+                    return
+
             result = func(*args, **kwargs)
             return result
 
@@ -27,49 +26,49 @@ class ChampionAction:
     def __init__(self, env, field):
         self.env = env
         self.field = field
-        self.state_manager = StateManager(env, field)
 
     def action(self, champion):
+        yield self.env.timeout(0)
         while True:
             if State.DEATH in champion.state:
                 champion.action = self.env.process(self.death(champion))
                 yield champion.action
                 if State.DEATH in champion.state:
                     return
+            try:
+                r = self.select_action(champion)
+                yield self.env.process(r) if r else self.env.timeout(0.01)
+            except simpy.Interrupt:
+                print("%s: action was interrupted" %champion)
 
-            while State.STUN in champion.state:
-                yield self.env.timeout(0.01)
-            if champion.target:
-                distance = search.get_distance(self.field.get_location(champion), champion.target)
-                if distance is None:
-                    champion.target = None
-                elif distance <= champion.range:
-                    champion.action = self.env.process(self.attack(champion))
-                    yield champion.action
-                else:
-                    yield self.env.process(self.search(champion))
-                    champion.action = self.env.process(self.move(champion))
-                    yield champion.action
-            else:
-                champion.action = self.env.process(self.search(champion))
-                yield champion.action
-
-    @set_break_status([State.DISARM, State.STUN, State.AIRBORNE, State.BANISHES])
-    def attack(self, champion):
-        try:
-            yield self.env.timeout(champion.attack_speed)
+    @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.DEATH])
+    def select_action(self, champion):
+        if champion.target:
             distance = search.get_distance(self.field.get_location(champion), champion.target)
-            if not distance or distance > champion.range:
-                return
-            print("%s: Attack %s at %f" % (champion, champion.target, self.env.now))
-            dmg = champion.target.get_damage(champion.attack_damage)
-        except simpy.Interrupt:
-            print('%s: Attack Was interrupted.' % champion)
+            if distance is None:
+                champion.target = None
+            elif distance <= champion.range:
+                champion.action = self.env.process(self.attack(champion))
+                yield champion.action
+            else:
+                yield self.env.process(self.search(champion))
+                champion.action = self.env.process(self.move(champion))
+                yield champion.action
+        else:
+            champion.action = self.env.process(self.search(champion))
+            yield champion.action
 
-    @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.ROOT])
+    @set_break_status([State.DISARM, State.STUN, State.AIRBORNE, State.BANISHES, State.DEATH])
+    def attack(self, champion):
+        yield self.env.timeout(1 / champion.attack_speed)
+        distance = search.get_distance(self.field.get_location(champion), champion.target)
+        if not distance or distance > champion.range:
+            return
+        print("%s: Attack %s at %f" % (champion, champion.target, self.env.now))
+        dmg = champion.target.get_damage(champion.attack_damage)
+
+    @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.ROOT, State.DEATH])
     def move(self, champion):
-        if State.ROOT in champion.state:
-            return self.env.timeout(0.01)
         path = search.get_path(self.field.get_location(champion), champion.target)
         if not path:
             raise Exception
