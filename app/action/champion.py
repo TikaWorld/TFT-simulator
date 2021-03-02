@@ -1,6 +1,7 @@
 import simpy
 
 from app.champion.state import State
+from app.champion.damage import DamageType, Damage
 from app.action import search
 from functools import wraps
 
@@ -39,7 +40,7 @@ class ChampionAction:
                 r = self.select_action(champion)
                 yield self.env.process(r) if r else self.env.timeout(0.01)
             except simpy.Interrupt:
-                print("%s: action was interrupted" %champion)
+                print("%s: action was interrupted" % champion)
 
     @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.DEATH])
     def select_action(self, champion):
@@ -60,12 +61,15 @@ class ChampionAction:
 
     @set_break_status([State.DISARM, State.STUN, State.AIRBORNE, State.BANISHES, State.DEATH])
     def attack(self, champion):
+        damage_type = DamageType.PHYSICAL
         yield self.env.timeout(1 / champion.attack_speed)
-        distance = search.get_distance(self.field.get_location(champion), champion.target)
-        if not distance or distance > champion.range:
+        if champion.target.is_dead():
             return
         print("%s: Attack %s at %f" % (champion, champion.target, self.env.now))
-        dmg = champion.target.get_damage(champion.attack_damage)
+        damage = Damage(champion.attack_damage, damage_type)
+        damage.set_critical(champion.critical_damage if champion.is_critical() else None)
+        damage.set_miss(champion.target.is_dodge())
+        dmg = champion.target.get_damage(damage)
 
     @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.ROOT, State.DEATH])
     def move(self, champion):
