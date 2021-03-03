@@ -60,6 +60,14 @@ class Damage:
     def set_ignore_miss(self, ignore_miss):
         self.critical_damage = ignore_miss
 
+    def get_pre_mitigated(self):
+        if self.is_miss and not self.ignore_miss:
+            return 0
+        result = self.damage
+        if self.critical_damage:
+            result *= (self.critical_damage/100)
+        return result
+
     def calc(self):
         if self.is_miss and not self.ignore_miss:
             return None

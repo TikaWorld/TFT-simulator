@@ -1,6 +1,7 @@
 import simpy
 
 from app.champion.state import State
+from app.champion.champion import Stat
 from app.champion.damage import DamageType, Damage
 from app.action import search
 from functools import wraps
@@ -48,7 +49,7 @@ class ChampionAction:
             distance = search.get_distance(self.field.get_location(champion), champion.target)
             if distance is None:
                 champion.target = None
-            elif distance <= champion.range:
+            elif distance <= champion.stat[Stat.RANGE]:
                 champion.action = self.env.process(self.attack(champion))
                 yield champion.action
             else:
@@ -61,15 +62,17 @@ class ChampionAction:
 
     @set_break_status([State.DISARM, State.STUN, State.AIRBORNE, State.BANISHES, State.DEATH])
     def attack(self, champion):
+        target = champion.target
         damage_type = DamageType.PHYSICAL
-        yield self.env.timeout(1 / champion.attack_speed)
-        if champion.target.is_dead():
+        yield self.env.timeout(1 / champion.stat[Stat.ATTACK_SPEED])
+        if target.is_dead():
             return
-        print("%s: Attack %s at %f" % (champion, champion.target, self.env.now))
-        damage = Damage(champion.attack_damage, damage_type)
-        damage.set_critical(champion.critical_damage if champion.is_critical() else None)
-        damage.set_miss(champion.target.is_dodge())
-        dmg = champion.target.get_damage(damage)
+        print("%s: Attack %s at %f" % (champion, target, self.env.now))
+        champion.generate_mana(10)
+        damage = Damage(champion.stat[Stat.ATTACK], damage_type)
+        damage.set_critical(champion.stat[Stat.CRITICAL_DAMAGE] if champion.is_critical() else None)
+        damage.set_miss(target.is_dodge())
+        dmg = target.get_damage(damage)
 
     @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.ROOT, State.DEATH])
     def move(self, champion):
