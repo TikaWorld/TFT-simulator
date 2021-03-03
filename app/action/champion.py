@@ -1,8 +1,8 @@
 import simpy
 
-from app.champion.state import State
-from app.champion.champion import Stat
-from app.champion.damage import DamageType, Damage
+from app.construct.state import State
+from app.construct.champion import Stat
+from app.construct.damage import DamageType, Damage
 from app.action import search
 from functools import wraps
 

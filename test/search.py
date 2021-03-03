@@ -1,5 +1,5 @@
 import simpy
-from app import field, champion
+from app.construct import field, champion
 
 
 def test_champion_search():

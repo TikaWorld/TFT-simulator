@@ -1,4 +1,4 @@
-from app.champion.state import State
+from app.construct.state import State
 
 
 class StateManager:

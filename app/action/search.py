@@ -1,5 +1,5 @@
 import copy
-from app.champion.state import State
+from app.construct.state import State
 
 
 def find_proximate(cur, include_friendly=False):

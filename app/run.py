@@ -1,9 +1,9 @@
 import simpy
 from action.champion import ChampionAction
 from action.state import StateManager
-from champion.champion import Champion
-from champion.state import State
-import field
+from construct.champion import Champion
+from construct.state import State
+from app.construct import field
 
 champ_data = {
     "name": "Dummy",
