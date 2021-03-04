@@ -3,10 +3,11 @@ from action.champion import ChampionAction
 from action.state import StateManager
 from construct.state import State
 from app.construct import field
+from app.construct.trait import duelist
 
 champ_data = {
     "name": "Dummy",
-    "max_hp": 100,
+    "max_hp": 1000,
     "max_mp": 100,
     "mp": 0,
     "heist": 550,
@@ -31,6 +32,8 @@ a = team_1.create_champion(champ_data)
 b = team_2.create_champion(champ_data)
 a.name = "a"
 b.name = "b"
+test_trait = duelist.Duelist()
+test_trait.activate(b)
 
 f.assign(a, [0, 0])
 f.assign(b, [1, 0])

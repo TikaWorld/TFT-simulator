@@ -25,18 +25,45 @@ class Stat(str, Enum):
         return self.name
 
 
+class Event(str, Enum):
+    BASIC_ATTACK = "basic_attack"
+    GET_DAMAGE = "get_damage"
+
+    def __repr__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
+
+
 class Champion:
     def __init__(self, champ_data, team):
         self.name = champ_data["name"]
         self.team = team
         self.state = []
-        self.buff = {}
+        self.buff = {s: [] for s in Stat}
+        self.event = {e: [] for e in Event}
         self.stat = {s: champ_data[s] for s in Stat}
         self.hp = self.stat[Stat.MAX_HP]
         self.mp = self.stat[Stat.MP]
         self.action = None
         self.target = None
         self.pos = None
+
+    def get_stat(self, stat_type):
+        origin = self.stat[stat_type]
+        buff = 0
+        for b in self.buff[stat_type]:
+            if b.is_absolute:
+                origin += b.result()
+                continue
+            buff += b.result()
+
+        return origin + (origin*buff)
+
+    def cause_event(self, event_type, **kwargs):
+        for e in self.event[event_type]:
+            e.get(**kwargs)
 
     def set_death(self):
         try:
@@ -47,15 +74,16 @@ class Champion:
         self.state = [State.DEATH]
 
     def generate_mana(self, mana):
-        self.mp = max(self.mp+mana, self.stat[Stat.MAX_MP])
+        self.mp = min(self.mp + mana, self.stat[Stat.MAX_MP])
 
     def get_damage(self, damage):
         damage.set_armor(self.stat[Stat.ARMOR])
         damage.set_magic_resistance(self.stat[Stat.MAGIC_RESISTANCE])
         reduced_damage = damage.calc()
+        self.cause_event(Event.GET_DAMAGE, damage=reduced_damage)
         self.generate_mana(damage.get_pre_mitigated() * 0.06)
 
-        if not reduced_damage:
+        if reduced_damage is None:
             print("%s: Avoid damage" % self.name)
             return None
         self.hp = max(self.hp - reduced_damage, 0)

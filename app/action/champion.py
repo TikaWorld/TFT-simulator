@@ -1,7 +1,7 @@
 import simpy
 
 from app.construct.state import State
-from app.construct.champion import Stat
+from app.construct.champion import Stat, Event
 from app.construct.damage import DamageType, Damage
 from app.action import search
 from functools import wraps
@@ -65,15 +65,19 @@ class ChampionAction:
     def attack(self, champion):
         target = champion.target
         damage_type = DamageType.PHYSICAL
-        yield self.env.timeout(1 / champion.stat[Stat.ATTACK_SPEED])
+        attack_speed = champion.get_stat(Stat.ATTACK_SPEED)
+        yield self.env.timeout(1 / attack_speed)
         if target.is_dead():
             return
-        print("%s: Attack %s at %f" % (champion, target, self.env.now))
+        print("%s: Attack %s with speed %.2f at %f" % (champion, target, attack_speed, self.env.now))
         champion.generate_mana(10)
-        damage = Damage(champion.stat[Stat.ATTACK], damage_type)
-        damage.set_critical(champion.stat[Stat.CRITICAL_DAMAGE] if champion.is_critical() else None)
+
+        damage = Damage(champion.get_stat(Stat.ATTACK), damage_type)
+        damage.set_critical(champion.get_stat(Stat.CRITICAL_DAMAGE) if champion.is_critical() else None)
         damage.set_miss(target.is_dodge())
+
         dmg = target.get_damage(damage)
+        champion.cause_event(Event.BASIC_ATTACK, damage=dmg)
 
     @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.ROOT, State.DEATH])
     def move(self, champion):
