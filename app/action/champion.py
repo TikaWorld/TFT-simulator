@@ -5,6 +5,7 @@ from app.construct.champion import Stat
 from app.construct.damage import DamageType, Damage
 from app.action import search
 from functools import wraps
+import random
 
 
 def set_break_status(break_status):
@@ -89,7 +90,7 @@ class ChampionAction:
     def search(self, champion):
         distance, result = search.find_proximate(self.field.get_location(champion))
         if result:
-            champion.target = result[0].champion
+            champion.target = random.choice(result).champion
             yield self.env.timeout(0)
         else:
             yield self.env.timeout(0.01)

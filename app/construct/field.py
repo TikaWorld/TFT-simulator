@@ -1,4 +1,5 @@
 import simpy
+from .team import Team
 
 
 class Cell:
@@ -16,8 +17,9 @@ class Field:
         self.env = simpy.Environment()
         self.width = width
         self.height = height
-        self.cell = [[Cell(j + ((i) * 7)) for j in range(self.width)] for i in range(self.height)]
+        self.cell = [[Cell(j + (i * 7)) for j in range(self.width)] for i in range(self.height)]
         self.champion_location = {}
+        self.team = {}
 
         for i in range(self.height):
             for j in range(width - 1):
@@ -36,6 +38,17 @@ class Field:
             for j in range(width - chk2):
                 self.cell[i][j].connect.append(self.cell[i + 1][j + chk2])
                 self.cell[i + 1][j + chk2].connect.append(self.cell[i][j])
+
+    def create_team(self, team_id=None):
+        t = Team()
+        if team_id:
+            self.team[team_id] = t
+            return team_id
+        self.team[id(t)] = t
+        return id(t)
+
+    def get_team(self, team_id):
+        return self.team[team_id]
 
     def assign(self, champ, loc):
         if self.cell[loc[0]][loc[1]].champion is not None:

@@ -66,6 +66,8 @@ def _bfs_champion_search(node, visited, conflict=True):
         if n[0].champion:
             if State.BANISHES in n[0].champion.state:
                 continue
+            if State.DEATH in n[0].champion.state:
+                continue
             result.append([n[0], n[1]])
             if conflict:
                 continue

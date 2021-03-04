@@ -1,13 +1,12 @@
 import simpy
 from action.champion import ChampionAction
 from action.state import StateManager
-from construct.champion import Champion
 from construct.state import State
 from app.construct import field
 
 champ_data = {
     "name": "Dummy",
-    "max_hp": 1000,
+    "max_hp": 100,
     "max_mp": 100,
     "mp": 0,
     "heist": 550,
@@ -26,8 +25,10 @@ env = simpy.Environment()
 f = field.Field()
 f_action = StateManager(env, f)
 c_action = ChampionAction(env, f)
-a = Champion(champ_data, "a")
-b = Champion(champ_data, "b")
+team_1 = f.get_team(f.create_team())
+team_2 = f.get_team(f.create_team())
+a = team_1.create_champion(champ_data)
+b = team_2.create_champion(champ_data)
 a.name = "a"
 b.name = "b"
 
