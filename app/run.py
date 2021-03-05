@@ -1,7 +1,7 @@
 import simpy
 from action.champion import ChampionAction
 from action.state import StateManager
-from app.construct.enum.state import State
+from app.construct.enum import State
 from app.construct import field
 from app.construct.trait import duelist
 
@@ -33,10 +33,10 @@ b = team_2.create_champion(champ_data)
 a.name = "a"
 b.name = "b"
 test_trait = duelist.Duelist()
-test_trait.activate(b)
+test_trait.activate([b])
 
 f.assign(a, [0, 0])
-f.assign(b, [1, 0])
+f.assign(b, [5, 0])
 f_action.put_state(a, State.STUN, 1)
 env.process(c_action.action(a))
 env.process(c_action.action(b))

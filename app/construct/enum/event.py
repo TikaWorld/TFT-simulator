@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class Event(str, Enum):
+class EventType(str, Enum):
     BASIC_ATTACK = "basic_attack"
     GET_DAMAGE = "get_damage"
 

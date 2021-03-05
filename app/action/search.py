@@ -1,15 +1,22 @@
 import copy
-from app.construct.enum.state import State
+from typing import Tuple, List, Union
+
+from app.construct.enum import State
+from app.construct import Champion
+from app.construct.field import Cell
+
+Path = List[Cell]
+TargetList = List[Cell]
+SearchResult = List[Union[Cell, Path]]
 
 
-def find_proximate(cur, include_friendly=False):
+def find_proximate(cur: Cell, include_friendly=False) -> Tuple[int, TargetList]:
     proximate = {"distance": None, "target": []}
-    visited = {}
-    search_results = _bfs_champion_search(cur, visited)
+    search_results = _bfs_champion_search(cur)
 
     for r in search_results:
-        target = r[0]
-        path = r[1]
+        target: Cell = r[0]
+        path: Path = r[1]
         if not include_friendly and target.champion.team == cur.champion.team:
             continue
         distance = len(path)
@@ -25,12 +32,11 @@ def find_proximate(cur, include_friendly=False):
     return proximate["distance"], proximate["target"]
 
 
-def get_distance(cur, champion):
-    visited = {}
-    search_results = _bfs_champion_search(cur, visited, conflict=False)
+def get_distance(cur: Cell, champion: Champion) -> Union[int, None]:
+    search_results = _bfs_champion_search(cur, conflict=False)
     for r in search_results:
-        target = r[0]
-        path = r[1]
+        target: Cell = r[0]
+        path: Path = r[1]
         distance = len(path)
         if target.champion == champion:
             return distance
@@ -38,20 +44,20 @@ def get_distance(cur, champion):
     return None
 
 
-def get_path(cur, champion):
-    visited = {}
-    search_results = _bfs_champion_search(cur, visited)
+def get_path(cur: Cell, champion: Champion) -> Union[Path, None]:
+    search_results = _bfs_champion_search(cur)
     for r in search_results:
-        target = r[0]
-        path = r[1]
+        target: Cell = r[0]
+        path: Path = r[1]
         if target.champion == champion:
             return path
 
     return None
 
 
-def _bfs_champion_search(node, visited, conflict=True):
+def _bfs_champion_search(node: Cell, conflict=True) -> List[SearchResult]:
     result = []
+    visited = {}
     if node.id in visited.keys():
         return result
     visited[node.id] = True
