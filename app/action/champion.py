@@ -1,8 +1,10 @@
 import simpy
 
-from app.construct.state import State
-from app.construct.champion import Stat, Event
-from app.construct.damage import DamageType, Damage
+from app.construct.enum.state import State
+from app.construct.enum.event import Event
+from app.construct.enum.stat import Stat
+from app.construct.damage import Damage
+from app.construct.enum.damage import DamageType
 from app.action import search
 from functools import wraps
 import random

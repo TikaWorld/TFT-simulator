@@ -1,7 +1,7 @@
 import simpy
 from action.champion import ChampionAction
 from action.state import StateManager
-from construct.state import State
+from app.construct.enum.state import State
 from app.construct import field
 from app.construct.trait import duelist
 

@@ -1,4 +1,4 @@
-from app.construct.state import State
+from app.construct.enum.state import State
 
 
 class StateManager:

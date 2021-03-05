@@ -1,39 +1,7 @@
-from .state import State
-from enum import Enum
+from app.construct.enum.event import Event
+from app.construct.enum.stat import Stat
+from app.construct.enum.state import State
 import random
-
-
-class Stat(str, Enum):
-    MAX_HP = "max_hp"
-    MAX_MP = "max_mp"
-    MP = "mp"
-    HEIST = "heist"
-    ATTACK = "attack_damage"
-    SPELL = "spell_power"
-    CRITICAL_CHANCE = "critical_strike_chance"
-    CRITICAL_DAMAGE = "critical_strike_damage"
-    RANGE = "range"
-    ARMOR = "armor"
-    MAGIC_RESISTANCE = "magic_resistance"
-    ATTACK_SPEED = "attack_speed"
-    DODGE_CHANCE = "dodge_chance"
-
-    def __repr__(self):
-        return self.name
-
-    def __str__(self):
-        return self.name
-
-
-class Event(str, Enum):
-    BASIC_ATTACK = "basic_attack"
-    GET_DAMAGE = "get_damage"
-
-    def __repr__(self):
-        return self.name
-
-    def __str__(self):
-        return self.name
 
 
 class Champion:
