@@ -2,7 +2,7 @@ from enum import Enum, auto
 
 
 class TraitType(str, Enum):
-    Duelist = auto()
+    DUELIST = "Duelist"
 
     def __repr__(self):
         return self.name

@@ -1,8 +1,10 @@
 from abc import ABC, abstractmethod
-from typing import List
+from typing import List, TYPE_CHECKING
 
-from app.construct import Champion
 from app.construct.enum import TraitType
+
+if TYPE_CHECKING:
+    from app.construct import Champion
 
 
 class Trait(ABC):
@@ -10,8 +12,13 @@ class Trait(ABC):
         self.type = trait_type
 
     @abstractmethod
-    def activate(self, champions: List[Champion]):
+    def activate(self, champions: List["Champion"]):
         return NotImplemented
 
-    def get_trait_champion(self, champions):
-        return NotImplemented
+    def get_trait_champions(self, champions: List["Champion"]) -> List["Champion"]:
+        result = []
+        for c in champions:
+            if self.type in c.trait:
+                result.append(c)
+        return result
+

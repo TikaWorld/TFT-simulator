@@ -8,12 +8,15 @@ class Champion:
     def __init__(self, champ_data, team: int):
         self.name = champ_data["name"]
         self.team: int = team
+        self.trait = champ_data["trait"]
+
         self.state: List[State] = []
         self.buff = {s: [] for s in Stat}
         self.event = {e: [] for e in EventType}
         self.stat = {s: champ_data[s] for s in Stat}
         self.hp = self.stat[Stat.MAX_HP]
         self.mp = self.stat[Stat.MP]
+
         self.action = None
         self.target: Union[Champion, None] = None
 
@@ -44,7 +47,7 @@ class Champion:
     def generate_mana(self, mana):
         self.mp = min(self.mp + mana, self.stat[Stat.MAX_MP])
 
-    def get_damage(self, damage) -> Union[int, float]:
+    def get_damage(self, damage) -> Union[int, float, None]:
         damage.set_armor(self.stat[Stat.ARMOR])
         damage.set_magic_resistance(self.stat[Stat.MAGIC_RESISTANCE])
         reduced_damage = damage.calc()
