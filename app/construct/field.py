@@ -2,8 +2,6 @@ from typing import List, Dict, TYPE_CHECKING, Union
 
 import simpy
 
-from .team import Team
-
 if TYPE_CHECKING:
     from . import Champion
 
@@ -25,7 +23,6 @@ class Field:
         self.height = height
         self.cell: List[List[Cell]] = [[Cell(j + (i * 7)) for j in range(self.width)] for i in range(self.height)]
         self.champion_location: Dict[Champion, Cell] = {}
-        self.team: Dict[int, Team] = {}
 
         for i in range(self.height):
             for j in range(width - 1):
@@ -44,17 +41,6 @@ class Field:
             for j in range(width - chk2):
                 self.cell[i][j].connect.append(self.cell[i + 1][j + chk2])
                 self.cell[i + 1][j + chk2].connect.append(self.cell[i][j])
-
-    def create_team(self, team_id=None) -> int:
-        t = Team()
-        if team_id:
-            self.team[team_id] = t
-            return team_id
-        self.team[id(t)] = t
-        return id(t)
-
-    def get_team(self, team_id) -> Team:
-        return self.team[team_id]
 
     def assign(self, champ: "Champion", loc: list[int]):
         if self.cell[loc[0]][loc[1]].champion is not None:
@@ -81,7 +67,7 @@ class Field:
         self.champion_location[champ].champion = None
         del self.champion_location[champ]
 
-    def get_location(self, champ: "Champion")-> Cell:
+    def get_location(self, champ: "Champion") -> Cell:
         if champ not in self.champion_location:
             raise Exception
         if self.champion_location[champ].champion is not champ:

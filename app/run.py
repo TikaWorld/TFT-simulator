@@ -4,6 +4,7 @@ from action.state import StateManager
 from app.construct.enum import State
 from app.construct import field
 from app.construct.trait import duelist, trait
+from app.game import Game
 
 champ_data = {
     "name": "Dummy",
@@ -23,22 +24,18 @@ champ_data = {
     "dodge_chance": 0
 }
 
-env = simpy.Environment()
-f = field.Field()
-f_action = StateManager(env, f)
-c_action = ChampionAction(env, f)
-team_1 = f.get_team(f.create_team())
-team_2 = f.get_team(f.create_team())
-a = team_1.create_champion(champ_data)
-b = team_2.create_champion(champ_data)
+game = Game()
+
+#f_action = StateManager(env, f)
+#c_action = ChampionAction(env, f)
+team_1 = game.create_team()
+team_2 = game.create_team()
+a = game.create_champion(team_1, champ_data)
+b = game.create_champion(team_2, champ_data)
 a.name = "a"
 b.name = "b"
-team_1.init()
 
-f.assign(a, [0, 0])
-f.assign(b, [5, 0])
-f_action.put_state(a, State.STUN, 1)
-env.process(c_action.action(a))
-env.process(c_action.action(b))
-
-env.run(until=5)
+game.batch_champion(a, [0, 0])
+game.batch_champion(b, [5, 0])
+#f_action.put_state(a, State.STUN, 1)
+game.start()

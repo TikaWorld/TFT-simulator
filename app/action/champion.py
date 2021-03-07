@@ -27,8 +27,8 @@ def set_break_status(break_status: List[State]):
 
 
 class ChampionAction:
-    def __init__(self, env: simpy.Environment, field: Field):
-        self.env: simpy.Environment = env
+    def __init__(self, field: Field):
+        self.env: simpy.Environment = field.env
         self.field: Field = field
 
     def action(self, champion: Champion) -> simpy.events.ProcessGenerator:

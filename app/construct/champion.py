@@ -1,13 +1,16 @@
-from typing import List, Union
+from typing import List, Union, TYPE_CHECKING
 
 from app.construct.enum import EventType, Stat, State
 import random
 
+if TYPE_CHECKING:
+    from app.construct import Team
+
 
 class Champion:
-    def __init__(self, champ_data, team: int):
+    def __init__(self, champ_data, team: "Team"):
         self.name = champ_data["name"]
-        self.team: int = team
+        self.team: Team = team
         self.trait = champ_data["trait"]
 
         self.state: List[State] = []
