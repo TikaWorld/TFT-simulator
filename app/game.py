@@ -10,18 +10,21 @@ class Game:
     def __init__(self):
         self.field = Field()
         self.champion: Dict[Team, List[Champion]] = {}
-        self.trait: Dict[Team, List[Trait]] = {}
+        self.trait: Dict[Team, Dict[Trait]] = {}
         self.action = ChampionAction(self.field)
 
     def create_team(self) -> Team:
         t = Team()
         self.champion[t] = []
+        self.trait[t] = {}
+
         return t
 
     def create_champion(self, team: Team, champ_data):
         c = Champion(champ_data, team)
         self.champion[team].append(c)
         for t in champ_data["trait"]:
+            print(self.trait)
             self.trait[team][t] = TRAIT[t]()
 
         return c
@@ -30,8 +33,8 @@ class Game:
         self.field.assign(champion, loc)
 
     def init(self):
-        for team_trait, team_champion in (self.trait.values(), self.champion.values()):
-            for t in team_trait:
+        for team_trait, team_champion in zip(self.trait.values(), self.champion.values()):
+            for t in team_trait.values():
                 t.activate(team_champion)
 
     def start(self):
