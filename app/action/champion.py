@@ -85,7 +85,7 @@ class ChampionAction:
         path: search.Path = search.get_path(self.field.get_location(champion), champion.target)
         if not path:
             raise Exception
-        yield self.env.timeout(250 / champion.get_stat(Stat.HEIST))
+        yield self.env.timeout(180 / champion.get_stat(Stat.HEIST))
         try:
             self.field.transfer(champion, path[0])
             print("%s: Move to %s at %f" % (champion, path[0], self.env.now))

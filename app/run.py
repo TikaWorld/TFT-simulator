@@ -1,9 +1,3 @@
-import simpy
-from action.champion import ChampionAction
-from action.state import StateManager
-from app.construct.enum import State
-from app.construct import field
-from app.construct.trait import duelist, trait
 from app.game import Game
 
 champ_data = {
@@ -26,8 +20,6 @@ champ_data = {
 
 game = Game()
 
-#f_action = StateManager(env, f)
-#c_action = ChampionAction(env, f)
 team_1 = game.create_team()
 team_2 = game.create_team()
 a = game.create_champion(team_1, champ_data)
@@ -37,5 +29,4 @@ b.name = "b"
 
 game.batch_champion(a, [0, 0])
 game.batch_champion(b, [5, 0])
-#f_action.put_state(a, State.STUN, 1)
 game.start()

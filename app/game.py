@@ -24,7 +24,6 @@ class Game:
         c = Champion(champ_data, team)
         self.champion[team].append(c)
         for t in champ_data["trait"]:
-            print(self.trait)
             self.trait[team][t] = TRAIT[t]()
 
         return c
