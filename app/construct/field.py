@@ -7,10 +7,11 @@ if TYPE_CHECKING:
 
 
 class Cell:
-    def __init__(self, i):
+    def __init__(self, i, pos):
         self.champion: Union[Champion, None] = None
         self.connect: List[Cell] = []
         self.id = i
+        self.pos = pos
 
     def __repr__(self):
         return "%d: %s " % (self.id, self.champion)
@@ -21,7 +22,8 @@ class Field:
         self.env = simpy.Environment()
         self.width = width
         self.height = height
-        self.cell: List[List[Cell]] = [[Cell(j + (i * 7)) for j in range(self.width)] for i in range(self.height)]
+        self.cell: List[List[Cell]] = \
+            [[Cell(j + (i * self.width), [i, j]) for j in range(self.width)] for i in range(self.height)]
         self.champion_location: Dict[Champion, Cell] = {}
 
         for i in range(self.height):

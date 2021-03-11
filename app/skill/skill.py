@@ -3,36 +3,38 @@ import numpy
 
 
 class Skill:
-    def __init__(self):
-        self.type = None
 
-    def action(self):
+    def cast(self, champion):
         return NotImplemented
-
-    def hit(self, champion):
-        champion.get_damage(0)
 
 
 class Projectile:
-    def __init__(self, pos, slope):
-        self.heist = 1300
-        self.accel = self.get_accel(slope)
-        self.pos = pos
+    def __init__(self, caster_pos, target_pos, heist):
+        self.heist = heist
+        self.slope = [target_pos[0] - caster_pos[0], target_pos[1] - caster_pos[1]]
+        self.accel = self.get_accel(self.slope)
+        self.start_pos = caster_pos
+        self.displacement = [0, 0]
+        self.alive = True
 
     @staticmethod
     def get_accel(slope):
         distance = math.sqrt(pow(slope[0], 2) + pow(slope[1], 2))
-        p = distance * 10
+        p = distance
         return slope[0] / p, slope[1] / p
 
-    def __next__(self):
+    def get_pos(self):
+        return [int(self.displacement[0]+self.start_pos[0]), int(self.displacement[1]+self.start_pos[1])]
+
+    def tick(self, second):
         r = []
-        for _ in numpy.arange(0, (self.heist/180)/10, 0.1):
-            self.pos[0] += self.accel[0]
-            self.pos[1] += self.accel[1]
-            if [int(self.pos[0]), int(self.pos[1])] not in r:
-                r.append([int(self.pos[0]), int(self.pos[1])])
+        for _ in numpy.arange(0, (self.heist / 180) * second, second):
+            self.displacement[0] += self.accel[0] * second
+            self.displacement[1] += self.accel[1] * second
+            collided_pos = self.get_pos()
+            if collided_pos not in r:
+                r.append(collided_pos)
         return r
 
-    def __iter__(self):
-        return self
+    def collide(self, champion):
+        return NotImplemented

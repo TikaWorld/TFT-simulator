@@ -1,4 +1,5 @@
 from app.game import Game
+from app.skill.javelin_toss import JavelinToss
 
 champ_data = {
     "name": "Dummy",
@@ -28,5 +29,14 @@ a.name = "a"
 b.name = "b"
 
 game.batch_champion(a, [0, 0])
-game.batch_champion(b, [5, 0])
+game.batch_champion(b, [0, 6])
+a.target = b
+skill = JavelinToss(game.field)
+game.field.env.process(skill.cast(a))
+
+b.target = a
+skill = JavelinToss(game.field)
+game.field.env.process(skill.cast(b))
+
+
 game.start()
