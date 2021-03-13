@@ -77,6 +77,13 @@ class Field:
 
         return self.champion_location[champ]
 
+    def get_cell(self, pos: List[int]) -> Union[Cell, None]:
+        if pos[0] < 0 or pos[1] < 0:
+            return None
+        if pos[0] >= self.height or pos[1] >= self.width:
+            return None
+        return self.cell[pos[0]][pos[1]]
+
     def __repr__(self):
         result = ""
         for line in self.cell:

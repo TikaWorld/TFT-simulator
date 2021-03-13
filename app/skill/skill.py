@@ -38,3 +38,6 @@ class Projectile:
 
     def collide(self, champion):
         return NotImplemented
+
+    def kill(self):
+        self.alive = False

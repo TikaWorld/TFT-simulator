@@ -29,7 +29,7 @@ a.name = "a"
 b.name = "b"
 
 game.batch_champion(a, [0, 0])
-game.batch_champion(b, [0, 6])
+game.batch_champion(b, [4, 2])
 a.target = b
 skill = JavelinToss(game.field)
 game.field.env.process(skill.cast(a))

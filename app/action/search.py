@@ -32,6 +32,28 @@ def find_proximate(cur: Cell, include_friendly=False) -> Tuple[int, TargetList]:
     return proximate["distance"], proximate["target"]
 
 
+def find_farthest(cur: Cell, include_friendly=False) -> Tuple[int, TargetList]:
+    proximate = {"distance": None, "target": []}
+    search_results = _bfs_champion_search(cur)
+
+    for r in search_results:
+        target: Cell = r[0]
+        path: Path = r[1]
+        if not include_friendly and target.champion.team == cur.champion.team:
+            continue
+        distance = len(path)
+        if proximate["distance"] is None:
+            proximate["distance"] = distance
+            proximate["target"].append(target)
+        elif proximate["distance"] == distance:
+            proximate["target"].append(target)
+        elif proximate["distance"] < distance:
+            proximate["target"] = [target]
+            proximate["distance"] = distance
+
+    return proximate["distance"], proximate["target"]
+
+
 def get_distance(cur: Cell, champion: Champion) -> Union[int, None]:
     search_results = _bfs_champion_search(cur, conflict=False)
     for r in search_results:
