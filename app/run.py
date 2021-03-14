@@ -1,12 +1,12 @@
 from app.game import Game
-from app.skill.javelin_toss import JavelinToss
 
 champ_data = {
     "name": "Dummy",
     "trait": ["Duelist"],
+    "skill": "javelin_toss",
     "max_hp": 1000,
     "max_mp": 100,
-    "mp": 0,
+    "mp": 100,
     "heist": 550,
     "attack_damage": 100,
     "spell_power": 100,
@@ -29,14 +29,7 @@ a.name = "a"
 b.name = "b"
 
 game.batch_champion(a, [0, 0])
-game.batch_champion(b, [4, 2])
-a.target = b
-skill = JavelinToss(game.field)
-game.field.env.process(skill.cast(a))
-
-b.target = a
-skill = JavelinToss(game.field)
-game.field.env.process(skill.cast(b))
+game.batch_champion(b, [0, 6])
 
 
 game.start()

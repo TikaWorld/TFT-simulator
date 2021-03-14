@@ -33,7 +33,7 @@ class JavelinToss(Skill):
                 collide_target: Champion = collide_pos.champion
                 if collide_target and collide_target not in javelin.ignore:
                     javelin.collide(collide_target)
-                    print("%s: Collide %s with javelin toss at %f" % (champion, collide_target, self.field.env.now))
+                    print(f'{champion}: Collide {collide_target} with javelin toss at {self.field.env.now:f}')
                     break
 
 

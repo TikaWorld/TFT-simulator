@@ -2,11 +2,14 @@ from typing import List, Union
 
 import simpy
 
+from app.action.skill import SkillManager
 from app.construct.enum import State, Stat, DamageType, EventType
 from app.construct import Damage, Champion, Field
 from app.action import search
 from functools import wraps
 import random
+
+from app.skill import SKILL
 
 
 def set_break_status(break_status: List[State]):
@@ -30,6 +33,7 @@ class ChampionAction:
     def __init__(self, field: Field):
         self.env: simpy.Environment = field.env
         self.field: Field = field
+        self.skill_manager = SkillManager(field)
 
     def action(self, champion: Champion) -> simpy.events.ProcessGenerator:
         yield self.env.timeout(0)
@@ -43,10 +47,12 @@ class ChampionAction:
                 r = self.select_action(champion)
                 yield self.env.process(r) if r else self.env.timeout(0.01)
             except simpy.Interrupt:
-                print("%s: action was interrupted" % champion)
+                print(f'{champion}: action was interrupted')
 
     @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.DEATH])
     def select_action(self, champion: Champion) -> simpy.events.ProcessGenerator:
+        champion.action = self.env.process(self.cast(champion))
+        yield champion.action
         if champion.target:
             distance = search.get_distance(self.field.get_location(champion), champion.target)
             if distance is None:
@@ -70,7 +76,7 @@ class ChampionAction:
         yield self.env.timeout(1 / attack_speed)
         if target.is_dead():
             return
-        print("%s: Attack %s with speed %.2f at %f" % (champion, target, attack_speed, self.env.now))
+        print(f'{champion}: Attack {target} with speed {attack_speed:.2f} at {self.env.now:f}')
         champion.generate_mana(10)
 
         damage = Damage(champion.get_stat(Stat.ATTACK), damage_type)
@@ -88,9 +94,9 @@ class ChampionAction:
         yield self.env.timeout(180 / champion.get_stat(Stat.HEIST))
         try:
             self.field.transfer(champion, path[0])
-            print("%s: Move to %s at %f" % (champion, path[0], self.env.now))
+            print(f'{champion}: Move to {path[0]} at {self.env.now:f}')
         except Exception:  # Need Define AlreadyArrived Error:
-            print("%s: Move action is canceled by already arrived champion at %f" % (champion, self.env.now))
+            print(f'{champion}: Move action is canceled by already arrived champion at {self.env.now:f}')
 
     def search(self, champion: Champion) -> simpy.events.ProcessGenerator:
         distance, result = search.find_proximate(self.field.get_location(champion))
@@ -101,9 +107,18 @@ class ChampionAction:
             yield self.env.timeout(0.01)
 
     def death(self, champion: Champion) -> simpy.events.ProcessGenerator:
-        if "reborn" in champion.buff.keys():
+        if 'reborn' in champion.buff.keys():
             print(champion.buff)
             return
-        print("%s: Champion is dead at %f" % (champion, self.env.now))
+        print(f'{champion}: Champion is dead at {self.env.now:f}')
         self.field.release(champion)
         yield self.env.timeout(0)
+
+    def cast(self, champion: Champion) -> simpy.events.ProcessGenerator:
+        skill = SKILL[champion.skill]
+        if not skill or not skill.chk_condition(champion):
+            yield self.env.timeout(0)
+            return
+        print(f'{champion}: Champion is cast at {self.env.now:f}')
+        self.field.env.process(skill(self.field).cast(champion))
+        champion.mp = 0

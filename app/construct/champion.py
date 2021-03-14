@@ -12,6 +12,7 @@ class Champion:
         self.name = champ_data["name"]
         self.team: Team = team
         self.trait = champ_data["trait"]
+        self.skill = champ_data["skill"]
 
         self.state: List[State] = []
         self.buff = {s: [] for s in Stat}
@@ -44,11 +45,11 @@ class Champion:
                 self.action.interrupt()
                 self.action = None
         except RuntimeError:
-            print("Action Already terminated")
+            print('Action Already terminated')
         self.state = [State.DEATH]
 
     def generate_mana(self, mana):
-        self.mp = min(self.mp + mana, self.stat[Stat.MAX_MP])
+        self.mp = min(self.mp + mana, self.get_stat(Stat.MAX_MP))
 
     def get_damage(self, damage) -> Union[int, float, None]:
         damage.set_armor(self.stat[Stat.ARMOR])
@@ -58,12 +59,12 @@ class Champion:
         self.generate_mana(damage.get_pre_mitigated() * 0.06)
 
         if reduced_damage is None:
-            print("%s: Avoid damage" % self.name)
+            print(f'{self.name}: Avoid damage')
             return None
         self.hp = max(self.hp - reduced_damage, 0)
         if not self.hp:
             self.set_death()
-        print("%s: Get Damage %d" % (self.name, reduced_damage))
+        print(f'{self.name}: Get Damage {reduced_damage}')
 
         return reduced_damage
 
@@ -84,5 +85,10 @@ class Champion:
             return True
         return False
 
+    def is_mp_full(self) -> bool:
+        if self.mp >= self.get_stat(Stat.MAX_MP):
+            return True
+        return False
+
     def __repr__(self):
-        return "%s" % self.name
+        return f'{self.name}'

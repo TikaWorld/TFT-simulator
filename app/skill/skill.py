@@ -7,6 +7,12 @@ class Skill:
     def cast(self, champion):
         return NotImplemented
 
+    @staticmethod
+    def chk_condition(champion):
+        if champion.target and champion.is_mp_full():
+            return True
+        return False
+
 
 class Projectile:
     def __init__(self, caster_pos, target_pos, heist):

@@ -26,7 +26,7 @@ class Duelist(Trait):
         super().__init__(TraitType.DUELIST)
         self.active_count = 0
 
-    def activate(self, champions: List["Champion"]):
+    def activate(self, champions: List['Champion']):
         trait_champs = self.get_trait_champions(champions)
         for champion in trait_champs:
             buff = DuelistBuff(0.15)
