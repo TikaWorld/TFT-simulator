@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List, TYPE_CHECKING
 
+from app.action.state import StateManager
 from app.construct.enum import TraitType
 
 if TYPE_CHECKING:
@@ -8,14 +9,15 @@ if TYPE_CHECKING:
 
 
 class Trait(ABC):
-    def __init__(self, trait_type: TraitType):
+    def __init__(self, trait_type: TraitType, state_manager: StateManager):
         self.type = trait_type
+        self.state_manager = state_manager
 
     @abstractmethod
-    def activate(self, champions: List["Champion"]):
+    def activate(self, champions: List['Champion']):
         return NotImplemented
 
-    def get_trait_champions(self, champions: List["Champion"]) -> List["Champion"]:
+    def get_trait_champions(self, champions: List['Champion']) -> List['Champion']:
         result = []
         for c in champions:
             if self.type in c.trait:

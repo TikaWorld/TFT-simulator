@@ -3,6 +3,7 @@ from typing import List, TYPE_CHECKING
 from ..enum import EventType, Stat, TraitType
 from ..buff import Buff
 from .trait import Trait
+from ...action.state import StateManager
 
 if TYPE_CHECKING:
     from app.construct import Champion
@@ -22,13 +23,13 @@ class DuelistBuff(Buff):
 
 
 class Duelist(Trait):
-    def __init__(self):
-        super().__init__(TraitType.DUELIST)
+    def __init__(self, state_manager: StateManager):
+        super().__init__(TraitType.DUELIST, state_manager)
         self.active_count = 0
 
     def activate(self, champions: List['Champion']):
         trait_champs = self.get_trait_champions(champions)
         for champion in trait_champs:
             buff = DuelistBuff(0.15)
-            champion.buff[Stat.ATTACK_SPEED].append(buff)
-            champion.event[EventType.BASIC_ATTACK].append(buff)
+            self.state_manager.put_buff(champion, Stat.ATTACK_SPEED, buff)
+            self.state_manager.put_event(champion, EventType.BASIC_ATTACK, buff)

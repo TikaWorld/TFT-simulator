@@ -1,6 +1,7 @@
 from typing import Dict, List
 
 from app.action.champion import ChampionAction
+from app.action.state import StateManager
 from app.construct import Field, Team, Champion
 from app.construct.trait import TRAIT
 from app.construct.trait.trait import Trait
@@ -12,6 +13,7 @@ class Game:
         self.champion: Dict[Team, List[Champion]] = {}
         self.trait: Dict[Team, Dict[Trait]] = {}
         self.action = ChampionAction(self.field)
+        self.state_manager = StateManager(self.field.env)
 
     def create_team(self) -> Team:
         t = Team()
@@ -24,7 +26,9 @@ class Game:
         c = Champion(champ_data, team)
         self.champion[team].append(c)
         for t in champ_data["trait"]:
-            self.trait[team][t] = TRAIT[t]()
+            if t not in self.trait[team]:
+                self.trait[team][t] = TRAIT[t](self.state_manager)
+            self.trait[team][t].active_count += 1
 
         return c
 

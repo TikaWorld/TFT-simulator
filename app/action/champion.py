@@ -2,7 +2,6 @@ from typing import List, Union
 
 import simpy
 
-from app.action.skill import SkillManager
 from app.construct.enum import State, Stat, DamageType, EventType
 from app.construct import Damage, Champion, Field
 from app.action import search
@@ -33,7 +32,6 @@ class ChampionAction:
     def __init__(self, field: Field):
         self.env: simpy.Environment = field.env
         self.field: Field = field
-        self.skill_manager = SkillManager(field)
 
     def action(self, champion: Champion) -> simpy.events.ProcessGenerator:
         yield self.env.timeout(0)
