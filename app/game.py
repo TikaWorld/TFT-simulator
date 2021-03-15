@@ -28,7 +28,7 @@ class Game:
         for t in champ_data["trait"]:
             if t not in self.trait[team]:
                 self.trait[team][t] = TRAIT[t](self.state_manager)
-            self.trait[team][t].active_count += 1
+            self.trait[team][t].add_active_key(c)
 
         return c
 

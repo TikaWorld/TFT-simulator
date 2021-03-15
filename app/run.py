@@ -2,7 +2,7 @@ from app.game import Game
 
 champ_data = {
     "name": "Dummy",
-    "trait": ["Duelist"],
+    "trait": ["Duelist", "Divine"],
     "skill": "javelin_toss",
     "max_hp": 1000,
     "max_mp": 100,
@@ -29,7 +29,7 @@ a.name = "a"
 b.name = "b"
 
 game.batch_champion(a, [0, 0])
-game.batch_champion(b, [0, 6])
+game.batch_champion(b, [6, 6])
 
 
 game.start()

@@ -37,7 +37,7 @@ class Champion:
 
     def cause_event(self, event_type, **kwargs):
         for e in self.event[event_type]:
-            e.get(**kwargs)
+            e.get(event_type, **kwargs)
 
     def set_death(self):
         try:
@@ -55,13 +55,14 @@ class Champion:
         damage.set_armor(self.stat[Stat.ARMOR])
         damage.set_magic_resistance(self.stat[Stat.MAGIC_RESISTANCE])
         reduced_damage = damage.calc()
-        self.cause_event(EventType.GET_DAMAGE, damage=reduced_damage)
         self.generate_mana(damage.get_pre_mitigated() * 0.06)
 
         if reduced_damage is None:
             print(f'{self.name}: Avoid damage')
             return None
         self.hp = max(self.hp - reduced_damage, 0)
+        self.cause_event(EventType.GET_DAMAGE, damage=reduced_damage, hp=self.hp, max_hp=self.get_stat(Stat.MAX_HP))
+
         if not self.hp:
             self.set_death()
         print(f'{self.name}: Get Damage {reduced_damage}')
