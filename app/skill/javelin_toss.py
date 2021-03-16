@@ -32,7 +32,7 @@ class JavelinToss(Skill):
                     break
                 collide_target: Champion = collide_pos.champion
                 if collide_target and collide_target not in javelin.ignore:
-                    javelin.collide(collide_target)
+                    javelin.collide(champion, collide_target)
                     print(f'{champion}: Collide {collide_target} with javelin toss at {self.field.env.now:f}')
                     break
 
@@ -46,8 +46,8 @@ class Javelin(Projectile):
     def set_ignore(self, champion: Champion):
         self.ignore.append(champion)
 
-    def collide(self, target: Champion):
+    def collide(self, caster: Champion, target: Champion):
         self.set_ignore(target)
-        d = Damage(self.damage_value, DamageType.MAGIC)
+        d = Damage(caster, self.damage_value, DamageType.MAGIC)
         target.get_damage(d)
         self.alive = False

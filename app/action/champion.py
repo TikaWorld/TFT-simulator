@@ -77,12 +77,12 @@ class ChampionAction:
         print(f'{champion}: Attack {target} with speed {attack_speed:.2f} at {self.env.now:f}')
         champion.generate_mana(10)
 
-        damage = Damage(champion.get_stat(Stat.ATTACK), damage_type)
+        damage = Damage(champion, champion.get_stat(Stat.ATTACK), damage_type)
         damage.set_critical(champion.get_stat(Stat.CRITICAL_DAMAGE) if champion.is_critical() else None)
         damage.set_miss(target.is_dodge())
 
         dmg: Union[int, float] = target.get_damage(damage)
-        champion.cause_event(EventType.BASIC_ATTACK, damage=dmg)
+        champion.cause_event(EventType.BASIC_ATTACK, damage=dmg, champion=champion, target=target)
 
     @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.ROOT, State.DEATH])
     def move(self, champion: Champion) -> simpy.events.ProcessGenerator:

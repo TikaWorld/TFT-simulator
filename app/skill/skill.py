@@ -42,7 +42,7 @@ class Projectile:
                 r.append(collided_pos)
         return r
 
-    def collide(self, champion):
+    def collide(self, champion, target):
         return NotImplemented
 
     def kill(self):

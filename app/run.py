@@ -16,7 +16,8 @@ champ_data = {
     "armor": 100,
     "magic_resistance": 100,
     "attack_speed": 1,
-    "dodge_chance": 0
+    "dodge_chance": 0,
+    "damage_reduce": 0
 }
 
 game = Game()

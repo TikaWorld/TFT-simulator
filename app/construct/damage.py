@@ -1,10 +1,14 @@
-from typing import Union
+from typing import Union, TYPE_CHECKING
 
 from app.construct.enum import DamageType
 
+if TYPE_CHECKING:
+    from app.construct import Champion
+
 
 class Damage:
-    def __init__(self, damage: Union[int, float], damage_type: DamageType, **kwargs):
+    def __init__(self, champion: 'Champion', damage: Union[int, float], damage_type: DamageType, **kwargs):
+        self.champion = champion
         self.damage: Union[int, float] = damage
         self.type: DamageType = damage_type
         self.critical_damage: Union[int, None] = None

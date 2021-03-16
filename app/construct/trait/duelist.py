@@ -20,16 +20,18 @@ class DuelistBuff(Buff, Event):
         if event_type == EventType.BASIC_ATTACK:
             self.count = min(self.count+1, 8)
 
-    def result(self):
-        return self.value * self.count
+    def result(self, buff_type: Stat):
+        if buff_type == Stat.ATTACK_SPEED:
+            return self.value * self.count
 
 
 class DuelistHeistBuff(Buff):
     def __init__(self):
         super().__init__(is_absolute=False)
 
-    def result(self):
-        return 0.5
+    def result(self, buff_type: Stat):
+        if buff_type == Stat.HEIST:
+            return 0.5
 
 
 class Duelist(Trait):

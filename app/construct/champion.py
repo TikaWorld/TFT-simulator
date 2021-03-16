@@ -1,6 +1,6 @@
 from typing import List, Union, TYPE_CHECKING
 
-from app.construct.enum import EventType, Stat, State
+from app.construct.enum import EventType, Stat, State, DamageType
 import random
 
 if TYPE_CHECKING:
@@ -29,9 +29,9 @@ class Champion:
         buff = 0
         for b in self.buff[stat_type]:
             if b.is_absolute:
-                origin += b.result()
+                origin += b.result(stat_type)
                 continue
-            buff += b.result()
+            buff += b.result(stat_type)
 
         return origin + (origin * buff)
 
@@ -39,22 +39,15 @@ class Champion:
         for e in self.event[event_type]:
             e.get(event_type, **kwargs)
 
-    def set_death(self):
-        try:
-            if self.action is not None:
-                self.action.interrupt()
-                self.action = None
-        except RuntimeError:
-            print('Action Already terminated')
-        self.state = [State.DEATH]
-
     def generate_mana(self, mana):
         self.mp = min(self.mp + mana, self.get_stat(Stat.MAX_MP))
 
     def get_damage(self, damage) -> Union[int, float, None]:
-        damage.set_armor(self.stat[Stat.ARMOR])
-        damage.set_magic_resistance(self.stat[Stat.MAGIC_RESISTANCE])
-        reduced_damage = damage.calc()
+        damage.set_armor(self.get_stat(Stat.ARMOR))
+        damage.set_magic_resistance(self.get_stat(Stat.MAGIC_RESISTANCE))
+        self.stat[Stat.DAMAGE_REDUCE] = damage.calc()
+        reduced_damage = self.stat[Stat.DAMAGE_REDUCE] \
+            if damage.type == DamageType.TRUE else self.get_stat(Stat.DAMAGE_REDUCE)
         self.generate_mana(damage.get_pre_mitigated() * 0.06)
 
         if reduced_damage is None:
@@ -90,6 +83,15 @@ class Champion:
         if self.mp >= self.get_stat(Stat.MAX_MP):
             return True
         return False
+
+    def set_death(self):
+        try:
+            if self.action is not None:
+                self.action.interrupt()
+                self.action = None
+        except RuntimeError:
+            print('Action Already terminated')
+        self.state = [State.DEATH]
 
     def __repr__(self):
         return f'{self.name}'

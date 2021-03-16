@@ -16,6 +16,8 @@ class Stat(str, Enum):
     ATTACK_SPEED = "attack_speed"
     DODGE_CHANCE = "dodge_chance"
 
+    DAMAGE_REDUCE = "damage_reduce"
+
     def __repr__(self):
         return self.name
 
