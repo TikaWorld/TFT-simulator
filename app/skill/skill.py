@@ -1,6 +1,8 @@
 import math
 import numpy
 
+from app.construct.field import pos_convert, pivot_convert
+
 
 class Skill:
 
@@ -15,11 +17,14 @@ class Skill:
 
 
 class Projectile:
-    def __init__(self, caster_pos, target_pos, heist):
+    def __init__(self, c_pos, t_pos, heist):
+        caster_pos = pivot_convert(c_pos)
+        target_pos = pivot_convert(t_pos)
+
         self.heist = heist
         self.slope = [target_pos[0] - caster_pos[0], target_pos[1] - caster_pos[1]]
         self.accel = self.get_accel(self.slope)
-        self.start_pos = caster_pos
+        self.start_pos = c_pos
         self.displacement = [0, 0]
         self.alive = True
 
@@ -30,7 +35,9 @@ class Projectile:
         return slope[0] / p, slope[1] / p
 
     def get_pos(self):
-        return [int(self.displacement[0]+self.start_pos[0]), int(self.displacement[1]+self.start_pos[1])]
+        converted_pos = pos_convert([self.displacement[0]+self.start_pos[0], self.displacement[1]+self.start_pos[1]],
+                                    self.start_pos)
+        return [int(converted_pos[0]), int(converted_pos[1])]
 
     def tick(self, second):
         r = []

@@ -4,11 +4,11 @@ from ..enum import EventType, Stat, TraitType, DamageType
 from ..buff import Buff
 from .trait import Trait
 from ..event import Event
-from ...action.state import StateManager
 from app.construct import Damage
 
 if TYPE_CHECKING:
     from app.construct import Champion
+    from ...action.state import StateManager
 
 
 class DivineBuff(Buff, Event):
@@ -31,7 +31,7 @@ class DivineBuff(Buff, Event):
         if event_type == EventType.GET_DAMAGE:
             max_hp = kwargs['max_hp']
             hp = kwargs['hp']
-            if (hp / max_hp) <= 0.9:
+            if (hp / max_hp) <= 0.5:
                 self.is_activated = True
         if self.is_activated:
             self.env.process(self.activate_divine())
@@ -52,7 +52,7 @@ class DivineBuff(Buff, Event):
 
 
 class Divine(Trait):
-    def __init__(self, state_manager: StateManager):
+    def __init__(self, state_manager: 'StateManager'):
         super().__init__(TraitType.DUELIST, state_manager)
 
     def get_buff(self):

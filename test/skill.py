@@ -5,6 +5,7 @@ from app.skill.skill import Projectile
 champ_data = {
     "name": "Dummy",
     "trait": ["Duelist"],
+    "skill": "",
     "max_hp": 1000,
     "max_mp": 100,
     "mp": 0,
@@ -17,7 +18,8 @@ champ_data = {
     "armor": 100,
     "magic_resistance": 100,
     "attack_speed": 1,
-    "dodge_chance": 0
+    "dodge_chance": 0,
+    "damage_reduce": 0
 }
 
 
@@ -33,14 +35,14 @@ def test_projectile():
     b.name = "b"
     c.name = "c"
 
-    field.assign(a, [0, 0])
-    field.assign(b, [5, 5])
-    field.assign(c, [1, 1])
+    field.assign(a, [0, 1])
+    field.assign(b, [7, 0])
 
     a.target = b
 
     skill = JavelinToss(field)
-    skill.cast(a)
+    field.env.process(skill.cast(a))
+    field.env.run(until=10)
 
 
 test_projectile()
