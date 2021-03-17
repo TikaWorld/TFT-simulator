@@ -5,12 +5,13 @@ import random
 
 if TYPE_CHECKING:
     from app.construct import Team
-    from app.construct.Barrier import Barrier
+    from app.construct.barrier import Barrier
 
 
 class Champion:
     def __init__(self, champ_data, team: "Team"):
         self.name = champ_data["name"]
+        self.id = champ_data["id"]
         self.team: Team = team
         self.trait = champ_data["trait"]
         self.skill = champ_data["skill"]
@@ -25,6 +26,9 @@ class Champion:
 
         self.action = None
         self.target: Union[Champion, None] = None
+
+    def heal(self, value):
+        self.hp = min(self.get_stat(Stat.MAX_HP), self.hp+value)
 
     def get_stat(self, stat_type) -> Union[int, float]:
         origin = self.stat[stat_type]

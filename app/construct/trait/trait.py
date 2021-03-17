@@ -5,13 +5,14 @@ from app.action.state import StateManager
 from app.construct.enum import TraitType
 
 if TYPE_CHECKING:
-    from app.construct import Champion
+    from app.construct import Champion, Field
 
 
 class Trait(ABC):
-    def __init__(self, trait_type: TraitType, state_manager: StateManager):
+    def __init__(self, trait_type: TraitType, field: 'Field', state_manager: StateManager):
         self.type = trait_type
         self.state_manager = state_manager
+        self.field = field
         self.active_list = []
 
     @abstractmethod
@@ -19,9 +20,9 @@ class Trait(ABC):
         return NotImplemented
 
     def add_active_key(self, champion):
-        if champion in self.active_list:
+        if champion.id in self.active_list:
             return
-        self.active_list.append(champion)
+        self.active_list.append(champion.id)
 
     def get_active_count(self) -> int:
         return len(self.active_list)

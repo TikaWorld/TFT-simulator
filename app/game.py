@@ -27,7 +27,7 @@ class Game:
         self.champion[team].append(c)
         for t in champ_data["trait"]:
             if t not in self.trait[team]:
-                self.trait[team][t] = TRAIT[t](self.state_manager)
+                self.trait[team][t] = TRAIT[t](self.field, self.state_manager)
             self.trait[team][t].add_active_key(c)
 
         return c

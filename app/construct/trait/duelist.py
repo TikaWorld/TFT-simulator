@@ -35,8 +35,8 @@ class DuelistHeistBuff(Buff):
 
 
 class Duelist(Trait):
-    def __init__(self, state_manager: StateManager):
-        super().__init__(TraitType.DUELIST, state_manager)
+    def __init__(self, field, state_manager: StateManager):
+        super().__init__(TraitType.DUELIST, field, state_manager)
 
     def get_buff(self):
         count = self.get_active_count()

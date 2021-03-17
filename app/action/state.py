@@ -57,3 +57,17 @@ class StateManager:
             champion.event[e_type].remove(e)
         except ValueError:
             print(f'<{e}> Event is already removed')
+
+    def put_barrier(self, champion: Champion, barrier, time=None):
+        self.env.process(self._put_barrier(champion, barrier, time))
+
+    def _put_barrier(self, champion: Champion, barrier, time: Union[int, float, None]) -> simpy.events.ProcessGenerator:
+        champion.barrier.append(barrier)
+        if time is None:
+            yield self.env.timeout(0)
+            return
+        yield self.env.timeout(time)
+        try:
+            champion.barrier.remove(barrier)
+        except ValueError:
+            print(f'<{barrier}> Barrier is already removed')

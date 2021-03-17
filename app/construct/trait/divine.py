@@ -9,6 +9,7 @@ from app.construct import Damage
 if TYPE_CHECKING:
     from app.construct import Champion
     from ...action.state import StateManager
+    from app.construct import Field
 
 
 class DivineBuff(Buff, Event):
@@ -52,8 +53,8 @@ class DivineBuff(Buff, Event):
 
 
 class Divine(Trait):
-    def __init__(self, state_manager: 'StateManager'):
-        super().__init__(TraitType.DUELIST, state_manager)
+    def __init__(self, field: 'Field', state_manager: 'StateManager'):
+        super().__init__(TraitType.DIVINE, field, state_manager)
 
     def get_buff(self):
         count = self.get_active_count()
