@@ -5,6 +5,7 @@ import random
 
 if TYPE_CHECKING:
     from app.construct import Team
+    from app.construct.Barrier import Barrier
 
 
 class Champion:
@@ -20,6 +21,7 @@ class Champion:
         self.stat = {s: champ_data[s] for s in Stat}
         self.hp = self.stat[Stat.MAX_HP]
         self.mp = self.stat[Stat.MP]
+        self.barrier: List['Barrier'] = []
 
         self.action = None
         self.target: Union[Champion, None] = None
@@ -34,6 +36,14 @@ class Champion:
             buff += b.result(stat_type)
 
         return origin + (origin * buff)
+
+    def use_barrier(self, dmg: Union[int, float]) -> Union[int, float]:
+        residual = dmg
+        for b in self.barrier:
+            residual = b.calc(residual)
+            if residual:
+                break
+        return residual
 
     def cause_event(self, event_type, **kwargs):
         for e in self.event[event_type]:
@@ -53,12 +63,13 @@ class Champion:
         if reduced_damage is None:
             print(f'{self.name}: Avoid damage')
             return None
-        self.hp = max(self.hp - reduced_damage, 0)
+        residual_damage = self.use_barrier(reduced_damage)
+        self.hp = max(self.hp - residual_damage, 0)
         self.cause_event(EventType.GET_DAMAGE, damage=reduced_damage, hp=self.hp, max_hp=self.get_stat(Stat.MAX_HP))
 
         if not self.hp:
             self.set_death()
-        print(f'{self.name}: Get Damage {reduced_damage}')
+        print(f'{self.name}: Get Damage {reduced_damage} HP left {self.hp}')
 
         return reduced_damage
 
