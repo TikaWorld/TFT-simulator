@@ -6,9 +6,9 @@ champ_data = {
     "name": "Dummy",
     "id": "TFT4_Yasuo",
     "trait": ["Duelist", "Divine", "Exile"],
-    "skill": "javelin_toss",
+    "skill": "striking_steel",
     "max_hp": 1000,
-    "max_mp": 100,
+    "max_mp": 50,
     "mp": 0,
     "heist": 550,
     "attack_damage": 100,
@@ -37,8 +37,8 @@ b.name = "b"
 c.name = "c"
 
 
-game.batch_champion(a, [0, 0])
-game.batch_champion(b, [6, 6])
-game.batch_champion(c, [1, 1])
+game.batch_champion(a, [1, 1])
+game.batch_champion(b, [1, 2])
+game.batch_champion(c, [2, 2])
 
 game.start()

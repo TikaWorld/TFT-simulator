@@ -24,7 +24,7 @@ class DivineBuff(Buff, Event):
     def get(self, event_type, **kwargs):
         if self.is_activated:
             if event_type == EventType.BASIC_ATTACK:
-                self.divine_attack(kwargs['champion'], kwargs['target'], kwargs['damage'])
+                self.divine_attack(kwargs['champion'], kwargs['targets'], kwargs['damage'])
         if event_type == EventType.BASIC_ATTACK:
             self.count += 1
             if self.count >= 6:
@@ -37,8 +37,9 @@ class DivineBuff(Buff, Event):
         if self.is_activated:
             self.env.process(self.activate_divine())
 
-    def divine_attack(self, champion: 'Champion', target: 'Champion', dmg: Union[int, float]):
-        target.get_damage(Damage(champion, dmg*self.value, damage_type=DamageType.TRUE))
+    def divine_attack(self, champion: 'Champion', targets: List['Champion'], dmg: Union[int, float]):
+        for target in targets:
+            target.get_damage(Damage(champion, dmg*self.value, damage_type=DamageType.TRUE))
 
     def activate_divine(self):
         self.activate = True

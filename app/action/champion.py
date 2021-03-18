@@ -82,7 +82,7 @@ class ChampionAction:
         damage.set_miss(target.is_dodge())
 
         dmg: Union[int, float] = target.get_damage(damage)
-        champion.cause_event(EventType.BASIC_ATTACK, damage=dmg, champion=champion, target=target)
+        champion.cause_event(EventType.BASIC_ATTACK, damage=dmg, champion=champion, targets=[target])
 
     @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.ROOT, State.DEATH])
     def move(self, champion: Champion) -> simpy.events.ProcessGenerator:

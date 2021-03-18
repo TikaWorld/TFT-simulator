@@ -78,13 +78,13 @@ class Champion:
         return reduced_damage
 
     def is_critical(self) -> bool:
-        chance = min(100, self.stat[Stat.CRITICAL_CHANCE])
+        chance = min(100, self.get_stat(Stat.CRITICAL_CHANCE))
         result = random.choices([True, False], weights=[chance, 100 - chance])
 
         return result[0]
 
     def is_dodge(self) -> bool:
-        chance = min(100, self.stat[Stat.DODGE_CHANCE])
+        chance = min(100, self.get_stat(Stat.DODGE_CHANCE))
         result = random.choices([True, False], weights=[chance, 100 - chance])
 
         return result[0]
