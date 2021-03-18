@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 
 class ExileBarrier(Barrier):
     def __init__(self, champion: 'Champion'):
-        super().__init__(0)
+        super().__init__(champion.get_stat(Stat.MAX_HP)/2)
 
 
 class ExileEnergyDrain(Event):
