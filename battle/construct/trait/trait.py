@@ -30,7 +30,7 @@ class Trait(ABC):
     def get_trait_champions(self, champions: List['Champion']) -> List['Champion']:
         result = []
         for c in champions:
-            if self.type in c.trait:
+            if self.type in c.traits:
                 result.append(c)
         return result
 

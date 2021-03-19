@@ -4,7 +4,7 @@ from enum import Enum, auto
 class TraitType(str, Enum):
     DUELIST = "Duelist"
     DIVINE = "Divine"
-    EXILE = "Exile"
+    EXILE = "Set4_Exile"
 
     def __repr__(self):
         return self.name

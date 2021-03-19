@@ -1,19 +1,34 @@
+import os
+import random
+import json
 from typing import List, Union, TYPE_CHECKING
 
 from battle.construct.enum import EventType, Stat, State, DamageType
-import random
 
 if TYPE_CHECKING:
     from battle.construct import Team
     from battle.construct.barrier import Barrier
 
+RESOURCE_DIR = os.getcwd() + "\\resource"
+
+
+def load_champion_data(path):
+    result = {}
+    with open(path + "/" + "champion.json", "r") as ch_json:
+        champion_data = json.load(ch_json)
+    list(map(lambda d: result.update({d["championId"]: d}), champion_data))
+    return result
+
+
+CHAMPION_DATA = load_champion_data(RESOURCE_DIR)
+
 
 class Champion:
     def __init__(self, champ_data, team: "Team"):
         self.name = champ_data["name"]
-        self.id = champ_data["id"]
+        self.id = champ_data["championId"]
         self.team: Team = team
-        self.trait = champ_data["trait"]
+        self.traits = champ_data["traits"]
         self.skill = champ_data["skill"]
 
         self.state: List[State] = []
@@ -28,7 +43,7 @@ class Champion:
         self.target: Union[Champion, None] = None
 
     def heal(self, value):
-        self.hp = min(self.get_stat(Stat.MAX_HP), self.hp+value)
+        self.hp = min(self.get_stat(Stat.MAX_HP), self.hp + value)
 
     def get_stat(self, stat_type) -> Union[int, float]:
         origin = self.stat[stat_type]
