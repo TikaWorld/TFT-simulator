@@ -6,9 +6,9 @@ from .trait import Trait
 from ..event import Event
 
 if TYPE_CHECKING:
-    from app.construct import Champion
+    from battle.construct import Champion
     from ...action.state import StateManager
-    from app.construct import Field
+    from battle.construct import Field
 
 
 class ExileBarrier(Barrier):

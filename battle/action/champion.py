@@ -2,13 +2,13 @@ from typing import List, Union
 
 import simpy
 
-from app.construct.enum import State, Stat, DamageType, EventType
-from app.construct import Damage, Champion, Field
-from app.action import search
+from battle.construct.enum import State, Stat, DamageType, EventType
+from battle.construct import Damage, Champion, Field
+from battle.action import search
 from functools import wraps
 import random
 
-from app.skill import SKILL
+from battle.skill import SKILL
 
 
 def set_break_status(break_status: List[State]):

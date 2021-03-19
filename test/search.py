@@ -1,8 +1,8 @@
-from app.construct import field, champion, team
+from battle.construct import field, champion, team
 
 
 def test_champion_search():
-    from app.action import search
+    from battle.action import search
 
     champ_data = {
         "name": "Dummy",

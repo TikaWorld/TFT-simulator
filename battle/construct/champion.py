@@ -1,11 +1,11 @@
 from typing import List, Union, TYPE_CHECKING
 
-from app.construct.enum import EventType, Stat, State, DamageType
+from battle.construct.enum import EventType, Stat, State, DamageType
 import random
 
 if TYPE_CHECKING:
-    from app.construct import Team
-    from app.construct.barrier import Barrier
+    from battle.construct import Team
+    from battle.construct.barrier import Barrier
 
 
 class Champion:

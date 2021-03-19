@@ -1,7 +1,7 @@
 import math
 import numpy
 
-from app.construct.field import pos_convert, pivot_convert
+from battle.construct.field import pos_convert, pivot_convert
 
 
 class Skill:

@@ -7,7 +7,7 @@ from ..event import Event
 from ...action.state import StateManager
 
 if TYPE_CHECKING:
-    from app.construct import Champion
+    from battle.construct import Champion
 
 
 class DuelistBuff(Buff, Event):

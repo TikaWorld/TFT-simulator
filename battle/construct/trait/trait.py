@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 from typing import List, TYPE_CHECKING
 
-from app.action.state import StateManager
-from app.construct.enum import TraitType
+from battle.action.state import StateManager
+from battle.construct.enum import TraitType
 
 if TYPE_CHECKING:
-    from app.construct import Champion, Field
+    from battle.construct import Champion, Field
 
 
 class Trait(ABC):

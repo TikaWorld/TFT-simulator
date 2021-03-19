@@ -1,8 +1,8 @@
 from typing import Union
 
-from app.construct.enum import Stat, EventType
-from app.construct.enum.state import State
-from app.construct import Champion, Buff
+from battle.construct.enum import Stat, EventType
+from battle.construct.enum.state import State
+from battle.construct import Champion, Buff
 
 import simpy
 

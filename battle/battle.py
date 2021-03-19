@@ -1,13 +1,13 @@
 from typing import Dict, List
 
-from app.action.champion import ChampionAction
-from app.action.state import StateManager
-from app.construct import Field, Team, Champion
-from app.construct.trait import TRAIT
-from app.construct.trait.trait import Trait
+from battle.action.champion import ChampionAction
+from battle.action.state import StateManager
+from battle.construct import Field, Team, Champion
+from battle.construct.trait import TRAIT
+from battle.construct.trait.trait import Trait
 
 
-class Game:
+class Battle:
     def __init__(self):
         self.field = Field()
         self.champion: Dict[Team, List[Champion]] = {}

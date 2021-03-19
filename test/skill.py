@@ -1,6 +1,6 @@
-from app.construct import Field, Champion, Team
-from app.skill.javelin_toss import JavelinToss
-from app.skill.skill import Projectile
+from battle.construct import Field, Champion, Team
+from battle.skill.javelin_toss import JavelinToss
+from battle.skill.skill import Projectile
 
 champ_data = {
     "name": "Dummy",

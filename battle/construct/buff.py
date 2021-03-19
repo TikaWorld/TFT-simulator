@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from app.construct.enum import Stat
+from battle.construct.enum import Stat
 
 
 class Buff(ABC):

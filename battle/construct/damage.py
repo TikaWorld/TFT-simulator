@@ -1,9 +1,9 @@
 from typing import Union, TYPE_CHECKING
 
-from app.construct.enum import DamageType
+from battle.construct.enum import DamageType
 
 if TYPE_CHECKING:
-    from app.construct import Champion
+    from battle.construct import Champion
 
 
 class Damage:

@@ -1,9 +1,9 @@
 import copy
 from typing import Tuple, List, Union
 
-from app.construct.enum import State
-from app.construct import Champion
-from app.construct.field import Cell
+from battle.construct.enum import State
+from battle.construct import Champion
+from battle.construct.field import Cell
 
 Path = List[Cell]
 TargetList = List[Cell]

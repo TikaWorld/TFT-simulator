@@ -34,6 +34,7 @@ class StrikingSteel(Skill):
         return result
 
     def cast(self, champion: Champion):
+        yield self.field.env.timeout(0)
         champion_count = lambda l: sum(
             map(lambda x: True if x.champion and x.champion.team != champion.team else False, l[1:]))
         result = None
@@ -51,13 +52,13 @@ class StrikingSteel(Skill):
             if champion_count(hit_box) > target_count:
                 candidate.append(hit_box)
         result = random.choice(candidate) if candidate else result
-        yield self.field.env.timeout(0.1)
 
         casting_cell = result[0]
         target_cells = result[1:]
         total_damage = 0
         total_target = []
         if casting_cell is not caster_cell:
+            yield self.field.env.timeout(0.1)
             self.field.transfer(champion, casting_cell)
         for t in target_cells:
             target = t.champion

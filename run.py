@@ -1,6 +1,6 @@
 import copy
 
-from app.game import Game
+import battle
 
 champ_data = {
     "name": "Dummy",
@@ -25,7 +25,7 @@ champ_data = {
 champ_data2 = copy.copy(champ_data)
 champ_data2["id"] = "TFT4_Yasuo2"
 
-game = Game()
+game = battle.Battle()
 
 team_1 = game.create_team()
 team_2 = game.create_team()
