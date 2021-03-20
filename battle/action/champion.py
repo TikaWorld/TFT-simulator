@@ -11,14 +11,19 @@ import random
 from battle.skill import SKILL
 
 
+def get_generator(value):
+    yield value
+
+
 def set_break_status(break_status: List[State]):
     def wrapper(func):
         @wraps(func)
         def decorator(*args, **kwargs):
+            cls = args[0]
             champion: Champion = args[1]
             for s in break_status:
                 if s in champion.state:
-                    return
+                    return get_generator(cls.env.timeout(0))
 
             result = func(*args, **kwargs)
             return result
