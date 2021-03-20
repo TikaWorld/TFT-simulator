@@ -4,6 +4,7 @@ from typing import Dict, List
 from battle.action.champion import ChampionAction
 from battle.action.state import StateManager
 from battle.construct import Field, Team, Champion, CHAMPION_DATA
+from battle.construct.enum import EventType
 from battle.construct.trait import TRAIT
 from battle.construct.trait.trait import Trait
 
@@ -66,5 +67,6 @@ class Battle:
         for c in self.champion.values():
             champions.extend(c)
         for c in champions:
+            c.cause_event(EventType.BATTLE_START)
             self.field.env.process(self.action.action(c))
         self.field.env.run(until=5)

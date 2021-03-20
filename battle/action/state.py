@@ -44,6 +44,9 @@ class StateManager:
             print(f'<{buff}> Buff is already removed')
 
     def put_event(self, champion: Champion, e_type: EventType, e, time=None):
+        if time is None:
+            champion.event[e_type].append(e)
+            return
         self.env.process(self._put_event(champion, e_type, e, time))
 
     def _put_event(self, champion: Champion, e_type: EventType, e,
