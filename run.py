@@ -5,7 +5,7 @@ game = battle.Battle()
 
 team_1 = game.create_team()
 team_2 = game.create_team()
-a = game.create_champion(team_1, "TFT4_Yasuo", 1)
+a = game.create_champion(team_1, "TFT4_Yasuo", 3)
 b = game.create_champion(team_2, "TFT4_Yasuo", 1)
 c = game.create_champion(team_2, "TFT4_Yasuo", 1)
 a.name = "a"

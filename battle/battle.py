@@ -11,12 +11,14 @@ from battle.construct.trait.trait import Trait
 def preprocess_champ_data(data, level):
     result = copy.deepcopy(data["stat"][str(level)])
     result["name"] = data["name"]
+    result["level"] = level
     result["championId"] = data["championId"]
     result["cost"] = data["cost"]
     result["traits"] = data["traits"]
     result["skill"] = data["skill"]
     result["dodge_chance"] = 0
     result["damage_reduce"] = 0
+    result["damage_increase"] = 0
     result["heist"] = 550
     result["critical_strike_chance"] = 25
     result["critical_strike_damage"] = 150

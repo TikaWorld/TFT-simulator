@@ -27,6 +27,7 @@ class Champion:
     def __init__(self, champ_data, team: "Team"):
         self.name = champ_data["name"]
         self.id = champ_data["championId"]
+        self.level = champ_data["level"]
         self.team: Team = team
         self.traits = champ_data["traits"]
         self.skill = champ_data["skill"]
@@ -74,9 +75,8 @@ class Champion:
     def get_damage(self, damage) -> Union[int, float, None]:
         damage.set_armor(self.get_stat(Stat.ARMOR))
         damage.set_magic_resistance(self.get_stat(Stat.MAGIC_RESISTANCE))
-        self.stat[Stat.DAMAGE_REDUCE] = damage.calc()
-        reduced_damage = self.stat[Stat.DAMAGE_REDUCE] \
-            if damage.type == DamageType.TRUE else self.get_stat(Stat.DAMAGE_REDUCE)
+        damage.set_damage_reduce(self.get_stat(Stat.DAMAGE_REDUCE))
+        reduced_damage = damage.calc()
         self.generate_mana(damage.get_pre_mitigated() * 0.06)
 
         if reduced_damage is None:

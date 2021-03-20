@@ -12,6 +12,8 @@ class Damage:
         self.damage: Union[int, float] = damage
         self.type: DamageType = damage_type
         self.critical_damage: Union[int, None] = None
+        self.damage_increase = 0
+        self.damage_reduce = 0
         self.is_miss: bool = False
         self.ignore_miss: bool = False
         self.resist = {
@@ -40,6 +42,12 @@ class Damage:
     def set_critical(self, critical_damage: int):
         self.critical_damage = critical_damage
 
+    def set_damage_increase(self, damage_increase: float):
+        self.damage_increase = damage_increase
+
+    def set_damage_reduce(self, damage_reduce: float):
+        self.damage_reduce = damage_reduce
+
     def set_miss(self, is_miss: bool):
         self.is_miss = is_miss
 
@@ -60,4 +68,7 @@ class Damage:
         result = self.damage * (100 / (100 + self.resist[self.type]))
         if self.critical_damage:
             result *= (self.critical_damage / 100)
+
+        result += result * self.damage_increase
+        result -= result * self.damage_reduce
         return result

@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
 class DivineBuff(Buff, Event):
     def __init__(self, env, value):
-        super().__init__(is_absolute=False)
+        super().__init__(is_absolute=True)
         self.count = 0
         self.value = value
         self.activate = False
@@ -49,7 +49,7 @@ class DivineBuff(Buff, Event):
     def result(self, buff_type):
         if self.activate:
             if buff_type == Stat.DAMAGE_REDUCE:
-                return - self.value
+                return self.value
         return 0
 
 
