@@ -13,19 +13,19 @@ class Trait(ABC):
         self.type = trait_type
         self.state_manager = state_manager
         self.field = field
-        self.active_list = []
+        self.active_list = {}
 
     @abstractmethod
     def activate(self, champions: List['Champion']):
         return NotImplemented
 
     def add_active_key(self, champion):
-        if champion.id in self.active_list:
-            return
-        self.active_list.append(champion.id)
+        if champion.id not in self.active_list.keys():
+            self.active_list[champion.id] = 0
+        self.active_list[champion.id] += 1
 
     def get_active_count(self) -> int:
-        return len(self.active_list)
+        return len(self.active_list.keys())
 
     def get_trait_champions(self, champions: List['Champion']) -> List['Champion']:
         result = []

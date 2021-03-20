@@ -76,4 +76,6 @@ class Divine(Trait):
             if buff:
                 self.state_manager.put_buff(champion, Stat.DAMAGE_REDUCE, buff)
                 self.state_manager.put_event(champion, EventType.BASIC_ATTACK, buff)
+                self.state_manager.put_event(champion, EventType.BASIC_ATTACK_TYPE_SKILL, buff)
+                self.state_manager.put_event(champion, EventType.CASTING_SKILL, buff)
                 self.state_manager.put_event(champion, EventType.GET_DAMAGE, buff)

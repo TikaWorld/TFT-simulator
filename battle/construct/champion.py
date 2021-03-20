@@ -69,7 +69,9 @@ class Champion:
         for e in self.event[event_type]:
             e.get(event_type, **kwargs)
 
-    def generate_mana(self, mana):
+    def generate_mana(self, mana, cause_event=True):
+        if cause_event:
+            self.cause_event(EventType.GENERATE_MP, mp=mana, champion=self)
         self.mp = min(self.mp + mana, self.get_stat(Stat.MAX_MP))
 
     def get_damage(self, damage) -> Union[int, float, None]:

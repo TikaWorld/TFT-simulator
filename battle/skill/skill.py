@@ -11,7 +11,8 @@ class Skill:
 
     @staticmethod
     def chk_condition(champion):
-        if champion.target and champion.is_mp_full():
+        target = champion.target
+        if target and not target.is_dead() and champion.is_mp_full():
             return True
         return False
 

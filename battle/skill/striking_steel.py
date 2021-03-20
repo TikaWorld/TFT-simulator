@@ -44,7 +44,8 @@ class StrikingSteel(Skill):
         damage = self.get_damage(champion)
         total_damage, total_target = self.attack_target(damage, target_cells)
 
-        champion.cause_event(EventType.BASIC_ATTACK, damage=total_damage, champion=champion, targets=total_target)
+        champion.cause_event(EventType.BASIC_ATTACK_TYPE_SKILL,
+                             damage=total_damage, champion=champion, targets=total_target)
         print(f'{champion}: Casting Striking Steel at {self.field.env.now:f}')
 
         yield self.field.env.timeout(0.3)

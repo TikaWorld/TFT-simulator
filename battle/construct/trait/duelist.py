@@ -58,3 +58,4 @@ class Duelist(Trait):
             if buff:
                 self.state_manager.put_buff(champion, Stat.ATTACK_SPEED, buff)
                 self.state_manager.put_event(champion, EventType.BASIC_ATTACK, buff)
+                self.state_manager.put_event(champion, EventType.BASIC_ATTACK_TYPE_SKILL, buff)

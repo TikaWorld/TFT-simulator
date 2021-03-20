@@ -69,4 +69,4 @@ class Battle:
         for c in champions:
             c.cause_event(EventType.BATTLE_START)
             self.field.env.process(self.action.action(c))
-        self.field.env.run(until=5)
+        self.field.env.run(until=15)
