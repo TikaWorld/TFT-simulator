@@ -6,6 +6,7 @@ from .skill import Skill
 from ..construct import Damage, Champion
 from ..construct.enum import DamageType, Stat, EventType
 from ..construct.field import Cell
+from ..logger import LOGGER, make_battle_record
 
 
 class StrikingSteel(Skill):
@@ -38,11 +39,17 @@ class StrikingSteel(Skill):
         casting_cell = casting[0]
         target_cells = casting[1:]
         if casting_cell is not caster_cell:
+            LOGGER[self.field.env].info(make_battle_record(self.field.env.now, "MOVE", dict(champion),
+                                                           start_cell=caster_cell.id, target_cell=casting_cell.id))
             yield self.field.env.timeout(0.1)
             self.field.transfer(champion, casting_cell)
+            LOGGER[self.field.env].info(make_battle_record(self.field.env.now, "ARRIVED", dict(champion),
+                                                           start_cell=caster_cell.id, target_cell=casting_cell.id))
 
         damage = self.get_damage(champion)
         total_damage, total_target = self.attack_target(damage, target_cells)
+        LOGGER[self.field.env].info(make_battle_record(self.field.env.now, "SKILL", dict(champion),
+                                                       target_cell=target_cell.id, skill="Striking Steel"))
 
         champion.cause_event(EventType.BASIC_ATTACK_TYPE_SKILL,
                              damage=total_damage, champion=champion, targets=total_target)

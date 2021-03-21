@@ -8,6 +8,8 @@ from battle.action import search
 from functools import wraps
 import random
 
+from battle.exception.field import AlreadyExistChampion
+from battle.logger import LOGGER, make_battle_record
 from battle.skill import SKILL
 
 
@@ -76,6 +78,9 @@ class ChampionAction:
         target: Champion = champion.target
         damage_type = DamageType.PHYSICAL
         attack_speed = champion.get_stat(Stat.ATTACK_SPEED)
+
+        LOGGER[self.env].info(make_battle_record(self.env.now, "BASIC_ATTACK", dict(champion),
+                                                 target=dict(target), attack_speed=attack_speed))
         yield self.env.timeout(1 / attack_speed)
         if target.is_dead():
             return
@@ -91,14 +96,23 @@ class ChampionAction:
 
     @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.ROOT, State.DEATH])
     def move(self, champion: Champion) -> simpy.events.ProcessGenerator:
-        path: search.Path = search.get_path(self.field.get_location(champion), champion.target)
+        current_cell = self.field.get_location(champion)
+        path: search.Path = search.get_path(current_cell, champion.target)
+        heist = champion.get_stat(Stat.HEIST)
         if not path:
             raise Exception
-        yield self.env.timeout(180 / champion.get_stat(Stat.HEIST))
+        LOGGER[self.env].info(make_battle_record(self.env.now, "MOVE", dict(champion),
+                                                 start_cell=current_cell.id, target_cell=path[0].id, heist=heist))
+
+        yield self.env.timeout(180 / heist)
         try:
             self.field.transfer(champion, path[0])
+            LOGGER[self.env].info(make_battle_record(self.env.now, "ARRIVED", dict(champion),
+                                                     start_cell=current_cell.id, target_cell=path[0].id, heist=heist))
             print(f'{champion}: Move to {path[0]} at {self.env.now:f}')
-        except Exception:  # Need Define AlreadyArrived Error:
+        except AlreadyExistChampion:
+            LOGGER[self.env].info(make_battle_record(self.env.now, "MOVE_CANCELED", dict(champion),
+                                                     start_cell=current_cell.id, target_cell=path[0].id, heist=heist))
             print(f'{champion}: Move action is canceled by already arrived champion at {self.env.now:f}')
 
     def search(self, champion: Champion) -> simpy.events.ProcessGenerator:
@@ -113,6 +127,7 @@ class ChampionAction:
         if 'reborn' in champion.buff.keys():
             print(champion.buff)
             return
+        LOGGER[self.env].info(make_battle_record(self.env.now, "DEATH", dict(champion)))
         print(f'{champion}: Champion is dead at {self.env.now:f}')
         self.field.release(champion)
         yield self.env.timeout(0)

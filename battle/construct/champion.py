@@ -1,9 +1,9 @@
 import os
 import random
 import json
-from typing import List, Union, TYPE_CHECKING
+from typing import List, Union, TYPE_CHECKING, Iterable
 
-from battle.construct.enum import EventType, Stat, State, DamageType
+from battle.construct.enum import EventType, Stat, State
 
 if TYPE_CHECKING:
     from battle.construct import Team
@@ -127,3 +127,26 @@ class Champion:
 
     def __repr__(self):
         return f'{self.name}'
+
+    def __iter__(self) -> Iterable[str]:
+        result = [
+            ("name", self.name),
+            ("id", self.id),
+            ("level", self.level),
+            ("team", str(self.team)),
+            ("traits", self.traits),
+            ("skill", self.skill),
+            ("state", self.state),
+            ("hp", self.hp),
+            ("mp", self.mp),
+        ]
+        stat = {}
+        barrier = 0
+        for s in Stat:
+            stat[s] = self.get_stat(s)
+        for b in self.barrier:
+            barrier += b.value
+        result.append(("stat", stat))
+        result.append(("barrier", barrier))
+
+        return iter(result)

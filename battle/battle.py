@@ -1,12 +1,15 @@
 import copy
 from typing import Dict, List
 
+import simpy
+
 from battle.action.champion import ChampionAction
 from battle.action.state import StateManager
-from battle.construct import Field, Team, Champion, CHAMPION_DATA
+from battle.construct import Field, Team, Champion, CHAMPION_DATA, TRAIT
 from battle.construct.enum import EventType
-from battle.construct.trait import TRAIT
+
 from battle.construct.trait.trait import Trait
+from battle.logger import make_battle_logger
 
 
 def preprocess_champ_data(data, level):
@@ -29,11 +32,14 @@ def preprocess_champ_data(data, level):
 
 class Battle:
     def __init__(self):
-        self.field = Field()
+        self.env = simpy.Environment()
+        self.field = Field(self.env)
         self.champion: Dict[Team, List[Champion]] = {}
         self.trait: Dict[Team, Dict[Trait]] = {}
         self.action = ChampionAction(self.field)
-        self.state_manager = StateManager(self.field.env)
+        self.state_manager = StateManager(self.env)
+        self.log = []
+        make_battle_logger(self.env, self.log)
 
     def create_team(self) -> Team:
         t = Team()
@@ -68,5 +74,5 @@ class Battle:
             champions.extend(c)
         for c in champions:
             c.cause_event(EventType.BATTLE_START)
-            self.field.env.process(self.action.action(c))
-        self.field.env.run(until=15)
+            self.env.process(self.action.action(c))
+        self.env.run(until=15)

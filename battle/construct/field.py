@@ -1,6 +1,6 @@
 from typing import List, Dict, TYPE_CHECKING, Union
 
-import simpy
+from ..exception.field import AlreadyExistChampion, NotExistChampion
 
 if TYPE_CHECKING:
     from . import Champion
@@ -38,8 +38,8 @@ class Cell:
 
 
 class Field:
-    def __init__(self, width=7, height=8):
-        self.env = simpy.Environment()
+    def __init__(self, env, width=7, height=8):
+        self.env = env
         self.width = width
         self.height = height
         self.cell: List[List[Cell]] = \
@@ -66,34 +66,34 @@ class Field:
 
     def assign(self, champ: "Champion", loc: list[int]):
         if self.cell[loc[0]][loc[1]].champion is not None:
-            raise Exception
+            raise AlreadyExistChampion
         self.cell[loc[0]][loc[1]].champion = champ
         self.champion_location[champ] = self.cell[loc[0]][loc[1]]
 
     def transfer(self, champ: "Champion", loc_cell: Cell):
         if loc_cell.champion is not None:
-            raise Exception
+            raise AlreadyExistChampion
         if champ not in self.champion_location:
-            raise Exception
+            raise NotExistChampion
         if self.champion_location[champ].champion is not champ:
-            raise Exception
+            raise NotExistChampion
         self.champion_location[champ].champion = None
         loc_cell.champion = champ
         self.champion_location[champ] = loc_cell
 
     def release(self, champ: "Champion"):
         if champ not in self.champion_location:
-            raise Exception
+            raise NotExistChampion
         if self.champion_location[champ].champion is not champ:
-            raise Exception
+            raise NotExistChampion
         self.champion_location[champ].champion = None
         del self.champion_location[champ]
 
     def get_location(self, champ: "Champion") -> Cell:
         if champ not in self.champion_location:
-            raise Exception
+            raise NotExistChampion
         if self.champion_location[champ].champion is not champ:
-            raise Exception
+            raise NotExistChampion
 
         return self.champion_location[champ]
 

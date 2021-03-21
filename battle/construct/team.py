@@ -5,3 +5,6 @@ class Team:
         self.trait = {}
         self.items = []
 
+    def __repr__(self):
+        return str(id(Team))
+

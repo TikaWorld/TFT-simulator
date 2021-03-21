@@ -504,7 +504,7 @@
         "range": 1,
         "armor": 30,
         "magic_resistance": 20,
-        "attack_speed": 1
+        "attack_speed": 0.7
         },
       "2": {
         "max_hp": 990,
@@ -515,7 +515,7 @@
         "range": 1,
         "armor": 30,
         "magic_resistance": 20,
-        "attack_speed": 1
+        "attack_speed": 0.7
         },
       "3": {
         "max_hp": 1782,
@@ -526,7 +526,7 @@
         "range": 1,
         "armor": 30,
         "magic_resistance": 20,
-        "attack_speed": 1
+        "attack_speed": 0.7
         }
       }
     },
