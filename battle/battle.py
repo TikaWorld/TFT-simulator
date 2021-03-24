@@ -1,4 +1,5 @@
 import copy
+import uuid
 from typing import Dict, List
 
 import simpy
@@ -15,6 +16,7 @@ from battle.logger import make_battle_logger
 def preprocess_champ_data(data, level):
     result = copy.deepcopy(data["stat"][str(level)])
     result["name"] = data["name"]
+    result["uuid"] = str(uuid.uuid4())
     result["level"] = level
     result["championId"] = data["championId"]
     result["cost"] = data["cost"]

@@ -26,6 +26,7 @@ CHAMPION_DATA = load_champion_data(RESOURCE_DIR)
 class Champion:
     def __init__(self, champ_data, team: "Team"):
         self.name = champ_data["name"]
+        self.uuid = champ_data["uuid"]
         self.id = champ_data["championId"]
         self.level = champ_data["level"]
         self.team: Team = team
@@ -131,6 +132,7 @@ class Champion:
     def __iter__(self) -> Iterable[str]:
         result = [
             ("name", self.name),
+            ("uuid", self.uuid),
             ("id", self.id),
             ("level", self.level),
             ("team", str(self.team)),
