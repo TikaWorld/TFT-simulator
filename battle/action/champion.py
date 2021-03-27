@@ -138,5 +138,5 @@ class ChampionAction:
             yield self.env.timeout(0)
             return
         print(f'{champion}: Champion is cast at {self.env.now:f}')
-        self.field.env.process(skill(self.field).cast(champion))
+        yield self.field.env.process(skill(self.field).cast(champion))
         champion.mp = 0
