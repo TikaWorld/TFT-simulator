@@ -8,7 +8,7 @@ setup(
     author='Seungchae Na',
     author_email='tikaworld0416@gmail.com',
     description='TeamFight Tactics Simulator.',
-    install_requires=['simpy==3.0.8'],
+    install_requires=['simpy==4.0.1'],
     packages=find_packages(where='battle'),
     package_dir={'': 'battle'},
     include_package_data=True,
