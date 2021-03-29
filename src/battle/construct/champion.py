@@ -14,7 +14,7 @@ RESOURCE_DIR = os.getcwd() + "\\resource"
 
 def load_champion_data(path):
     result = {}
-    with open(path + "/" + "champion.json", "r") as ch_json:
+    with open(path + "\\" + "champion.json", "r") as ch_json:
         champion_data = json.load(ch_json)
     list(map(lambda d: result.update({d["championId"]: d}), champion_data))
     return result
