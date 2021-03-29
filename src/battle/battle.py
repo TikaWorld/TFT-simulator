@@ -43,8 +43,8 @@ class Battle:
         self.log = []
         make_battle_logger(self.env, self.log)
 
-    def create_team(self) -> Team:
-        t = Team()
+    def create_team(self, team_id=None) -> Team:
+        t = Team(team_id)
         self.champion[t] = []
         self.trait[t] = {}
 
@@ -64,10 +64,19 @@ class Battle:
     def batch_champion(self, champion: Champion, loc: list[int]):
         self.field.assign(champion, loc)
 
+    def get_current(self):
+        result = {}
+        for team in self.champion.keys():
+            result[str(team)] = {}
+            result[str(team)]['champions'] = list(map(dict, self.champion[team]))
+            result[str(team)]['trait'] = team.trait
+        return result
+
     def init(self):
-        for team_trait, team_champion in zip(self.trait.values(), self.champion.values()):
-            for t in team_trait.values():
-                t.activate(team_champion)
+        for team in self.champion.keys():
+            for t in self.trait[team].values():
+                t.activate(self.champion[team])
+                team.trait[t.type.value] = t.get_active_count()
 
     def start(self):
         self.init()
