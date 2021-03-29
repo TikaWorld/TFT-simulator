@@ -1,6 +1,7 @@
 import os
 import random
 import json
+from pathlib import Path
 from typing import List, Union, TYPE_CHECKING, Iterable
 
 from battle.construct.enum import EventType, Stat, State
@@ -9,18 +10,18 @@ if TYPE_CHECKING:
     from battle.construct import Team
     from battle.construct.barrier import Barrier
 
-RESOURCE_DIR = os.getcwd() + "\\resource"
+PROJECT_DIR = str(Path(os.path.abspath(__file__)).parent.parent.absolute())
 
 
 def load_champion_data(path):
     result = {}
-    with open(path + "\\" + "champion.json", "r") as ch_json:
+    with open(path + "/resource/champion.json", "r") as ch_json:
         champion_data = json.load(ch_json)
     list(map(lambda d: result.update({d["championId"]: d}), champion_data))
     return result
 
 
-CHAMPION_DATA = load_champion_data(RESOURCE_DIR)
+CHAMPION_DATA = load_champion_data(PROJECT_DIR)
 
 
 class Champion:

@@ -11,6 +11,7 @@ setup(
     install_requires=['simpy==4.0.1'],
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
+    data_files=[('src/battle/resource', ['src/battle/resource/champion.json'])],
     include_package_data=True,
     classifiers=[
         'Environment :: Console',
