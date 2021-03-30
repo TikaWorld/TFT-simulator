@@ -56,6 +56,8 @@ class Battle:
         self.champion[team].append(c)
         for t in champ_data["traits"]:
             if t not in self.trait[team]:
+                if t not in TRAIT.keys():
+                    continue
                 self.trait[team][t] = TRAIT[t](self.field, self.state_manager)
             self.trait[team][t].add_active_key(c)
 
@@ -68,7 +70,10 @@ class Battle:
         result = {}
         for team in self.champion.keys():
             result[str(team)] = {}
-            result[str(team)]['champions'] = list(map(dict, self.champion[team]))
+            result[str(team)]['champions'] = {}
+            for c in self.champion[team]:
+                pos = self.field.get_location(c).id
+                result[str(team)]['champions'][pos] = dict(c)
             result[str(team)]['trait'] = team.trait
         return result
 
@@ -77,6 +82,7 @@ class Battle:
             for t in self.trait[team].values():
                 t.activate(self.champion[team])
                 team.trait[t.type.value] = t.get_active_count()
+        print(self.get_current())
 
     def start(self):
         self.init()

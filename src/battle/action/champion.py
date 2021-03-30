@@ -133,9 +133,13 @@ class ChampionAction:
         yield self.env.timeout(0)
 
     def cast(self, champion: Champion) -> simpy.events.ProcessGenerator:
+        if champion.skill not in SKILL.keys():
+            champion.mp = 0
+            return
         skill = SKILL[champion.skill]
         if not skill or not skill.chk_condition(champion):
             yield self.env.timeout(0)
+            champion.mp = 0
             return
         print(f'{champion}: Champion is cast at {self.env.now:f}')
         yield self.field.env.process(skill(self.field).cast(champion))

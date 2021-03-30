@@ -6,7 +6,43 @@
     "traits": [
       "Cultist",
       "Set4_Vanguard"
-    ]
+    ],
+    "skill": "Infernal Chains",
+    "stat": {
+      "1": {
+        "max_hp": 900,
+        "max_mp": 150,
+        "mp": 75,
+        "attack_damage": 60,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 70,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 1620,
+        "max_mp": 150,
+        "mp": 75,
+        "attack_damage": 108,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 70,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 2916,
+        "max_mp": 150,
+        "mp": 75,
+        "attack_damage": 194.4,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 70,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Akali",
@@ -15,7 +51,43 @@
     "traits": [
       "Set4_Ninja",
       "Set4_Assassin"
-    ]
+    ],
+    "skill": "Five Point Strike",
+    "stat": {
+      "1": {
+        "max_hp": 650,
+        "max_mp": 20,
+        "mp": 0,
+        "attack_damage": 55,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      },
+      "2": {
+        "max_hp": 1170,
+        "max_mp": 20,
+        "mp": 0,
+        "attack_damage": 99,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      },
+      "3": {
+        "max_hp": 2106,
+        "max_mp": 20,
+        "mp": 0,
+        "attack_damage": 178.2,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      }
+    }
   },
   {
     "name": "Annie",
@@ -24,7 +96,43 @@
     "traits": [
       "Fortune",
       "Set4_Mage"
-    ]
+    ],
+    "skill": "Burst Shield",
+    "stat": {
+      "1": {
+        "max_hp": 750,
+        "max_mp": 65,
+        "mp": 0,
+        "attack_damage": 45,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.6
+      },
+      "2": {
+        "max_hp": 1350,
+        "max_mp": 65,
+        "mp": 0,
+        "attack_damage": 81,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.6
+      },
+      "3": {
+        "max_hp": 2430,
+        "max_mp": 65,
+        "mp": 0,
+        "attack_damage": 145.8,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.6
+      }
+    }
   },
   {
     "name": "Aurelion Sol",
@@ -33,7 +141,43 @@
     "traits": [
       "Set4_Dragonsoul",
       "Set4_Mage"
-    ]
+    ],
+    "skill": "Voice of Lightning",
+    "stat": {
+      "1": {
+        "max_hp": 650,
+        "max_mp": 80,
+        "mp": 0,
+        "attack_damage": 40,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 80,
+        "attack_speed": 0.75
+      },
+      "2": {
+        "max_hp": 1170,
+        "max_mp": 80,
+        "mp": 0,
+        "attack_damage": 72,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 80,
+        "attack_speed": 0.75
+      },
+      "3": {
+        "max_hp": 2106,
+        "max_mp": 80,
+        "mp": 0,
+        "attack_damage": 129.6,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 80,
+        "attack_speed": 0.75
+      }
+    }
   },
   {
     "name": "Azir",
@@ -43,7 +187,43 @@
       "Warlord",
       "Keeper",
       "Emperor"
-    ]
+    ],
+    "skill": "Emperor's Divide",
+    "stat": {
+      "1": {
+        "max_hp": 950,
+        "max_mp": 150,
+        "mp": 75,
+        "attack_damage": 70,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      },
+      "2": {
+        "max_hp": 1710,
+        "max_mp": 150,
+        "mp": 75,
+        "attack_damage": 126,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      },
+      "3": {
+        "max_hp": 3078,
+        "max_mp": 150,
+        "mp": 75,
+        "attack_damage": 226.8,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      }
+    }
   },
   {
     "name": "Brand",
@@ -52,7 +232,43 @@
     "traits": [
       "Set4_Dragonsoul",
       "Set4_Mage"
-    ]
+    ],
+    "skill": "Dragonfire Pillar",
+    "stat": {
+      "1": {
+        "max_hp": 500,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 40,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 20,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 900,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 72,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 20,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 1620,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 129.6,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 20,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Braum",
@@ -61,7 +277,43 @@
     "traits": [
       "Set4_Dragonsoul",
       "Set4_Vanguard"
-    ]
+    ],
+    "skill": "Unbreakable",
+    "stat": {
+      "1": {
+        "max_hp": 800,
+        "max_mp": 60,
+        "mp": 30,
+        "attack_damage": 40,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.75
+      },
+      "2": {
+        "max_hp": 1440,
+        "max_mp": 60,
+        "mp": 30,
+        "attack_damage": 72,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.75
+      },
+      "3": {
+        "max_hp": 2592,
+        "max_mp": 60,
+        "mp": 30,
+        "attack_damage": 129.6,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.75
+      }
+    }
   },
   {
     "name": "Cho'Gath",
@@ -70,7 +322,43 @@
     "traits": [
       "Set4_Fabled",
       "Set4_Brawler"
-    ]
+    ],
+    "skill": "Rupture",
+    "stat": {
+      "1": {
+        "max_hp": 1000,
+        "max_mp": 180,
+        "mp": 100,
+        "attack_damage": 100,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 70,
+        "magic_resistance": 60,
+        "attack_speed": 0.6
+      },
+      "2": {
+        "max_hp": 1800,
+        "max_mp": 180,
+        "mp": 100,
+        "attack_damage": 180,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 70,
+        "magic_resistance": 60,
+        "attack_speed": 0.6
+      },
+      "3": {
+        "max_hp": 3240,
+        "max_mp": 180,
+        "mp": 100,
+        "attack_damage": 324,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 70,
+        "magic_resistance": 60,
+        "attack_speed": 0.6
+      }
+    }
   },
   {
     "name": "Darius",
@@ -79,7 +367,43 @@
     "traits": [
       "Fortune",
       "Set4_Slayer"
-    ]
+    ],
+    "skill": "Fortune's Guillotine",
+    "stat": {
+      "1": {
+        "max_hp": 800,
+        "max_mp": 50,
+        "mp": 0,
+        "attack_damage": 70,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.7
+      },
+      "2": {
+        "max_hp": 1440,
+        "max_mp": 50,
+        "mp": 0,
+        "attack_damage": 126,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.7
+      },
+      "3": {
+        "max_hp": 2592,
+        "max_mp": 50,
+        "mp": 0,
+        "attack_damage":  226.8,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.7
+      }
+    }
   },
   {
     "name": "Diana",
@@ -88,7 +412,43 @@
     "traits": [
       "Set4_Spirit",
       "Set4_Assassin"
-    ]
+    ],
+    "skill": "Pale Cascade",
+    "stat": {
+      "1": {
+        "max_hp": 550,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 50,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 30,
+        "attack_speed": 0.7
+      },
+      "2": {
+        "max_hp": 990,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 90,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 30,
+        "attack_speed": 0.7
+      },
+      "3": {
+        "max_hp": 1782,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 162,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 30,
+        "attack_speed": 0.7
+      }
+    }
   },
   {
     "name": "Elise",
@@ -97,7 +457,43 @@
     "traits": [
       "Cultist",
       "Keeper"
-    ]
+    ],
+    "skill": "Spider Form",
+    "stat": {
+      "1": {
+        "max_hp": 600,
+        "max_mp": 75,
+        "mp": 0,
+        "attack_damage": 45,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 1080,
+        "max_mp": 75,
+        "mp": 0,
+        "attack_damage": 81,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 1944,
+        "max_mp": 75,
+        "mp": 0,
+        "attack_damage": 145.8,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Fiora",
@@ -106,7 +502,43 @@
     "traits": [
       "Set4_Enlightened",
       "Duelist"
-    ]
+    ],
+    "skill": "Riposte",
+    "stat": {
+      "1": {
+        "max_hp": 600,
+        "max_mp": 95,
+        "mp": 0,
+        "attack_damage": 45,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 35,
+        "magic_resistance": 30,
+        "attack_speed": 0.75
+      },
+      "2": {
+        "max_hp": 1080,
+        "max_mp": 95,
+        "mp": 0,
+        "attack_damage": 81,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 35,
+        "magic_resistance": 30,
+        "attack_speed": 0.75
+      },
+      "3": {
+        "max_hp": 1944,
+        "max_mp": 95,
+        "mp": 0,
+        "attack_damage": 145.8,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 35,
+        "magic_resistance": 30,
+        "attack_speed": 0.75
+      }
+    }
   },
   {
     "name": "Garen",
@@ -115,7 +547,43 @@
     "traits": [
       "Warlord",
       "Set4_Vanguard"
-    ]
+    ],
+    "skill": "Judgment",
+    "stat": {
+      "1": {
+        "max_hp": 600,
+        "max_mp": 100,
+        "mp": 0,
+        "attack_damage": 50,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 35,
+        "attack_speed": 0.6
+      },
+      "2": {
+        "max_hp": 1080,
+        "max_mp": 100,
+        "mp": 0,
+        "attack_damage": 90,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 35,
+        "attack_speed": 0.6
+      },
+      "3": {
+        "max_hp": 1944,
+        "max_mp": 100,
+        "mp": 0,
+        "attack_damage": 162,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 35,
+        "attack_speed": 0.6
+      }
+    }
   },
   {
     "name": "Irelia",
@@ -125,7 +593,43 @@
       "Set4_Enlightened",
       "Divine",
       "Set4_Adept"
-    ]
+    ],
+    "skill": "Bladestorm",
+    "stat": {
+      "1": {
+        "max_hp": 800,
+        "max_mp": 100,
+        "mp": 50,
+        "attack_damage": 55,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 1440,
+        "max_mp": 100,
+        "mp": 50,
+        "attack_damage": 99,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 2592,
+        "max_mp": 100,
+        "mp": 50,
+        "attack_damage": 178.2,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Janna",
@@ -134,7 +638,43 @@
     "traits": [
       "Set4_Enlightened",
       "Set4_Mystic"
-    ]
+    ],
+    "skill": "Eye of the Storm",
+    "stat": {
+      "1": {
+        "max_hp": 550,
+        "max_mp": 70,
+        "mp": 40,
+        "attack_damage": 40,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.6
+      },
+      "2": {
+        "max_hp": 990,
+        "max_mp": 70,
+        "mp": 40,
+        "attack_damage": 72,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.6
+      },
+      "3": {
+        "max_hp": 1782,
+        "max_mp": 70,
+        "mp": 40,
+        "attack_damage": 129.6,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.6
+      }
+    }
   },
   {
     "name": "Jarvan IV",
@@ -143,7 +683,43 @@
     "traits": [
       "Warlord",
       "Keeper"
-    ]
+    ],
+    "skill": "Dragon Strike",
+    "stat": {
+      "1": {
+        "max_hp": 600,
+        "max_mp": 100,
+        "mp": 50,
+        "attack_damage": 60,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 45,
+        "magic_resistance": 30,
+        "attack_speed": 0.6
+      },
+      "2": {
+        "max_hp": 1080,
+        "max_mp": 100,
+        "mp": 50,
+        "attack_damage": 108,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 45,
+        "magic_resistance": 30,
+        "attack_speed": 0.6
+      },
+      "3": {
+        "max_hp": 1944,
+        "max_mp": 100,
+        "mp": 50,
+        "attack_damage": 194.4,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 45,
+        "magic_resistance": 30,
+        "attack_speed": 0.6
+      }
+    }
   },
   {
     "name": "Jax",
@@ -152,7 +728,43 @@
     "traits": [
       "Divine",
       "Duelist"
-    ]
+    ],
+    "skill": "Counter Strike",
+    "stat": {
+      "1": {
+        "max_hp": 750,
+        "max_mp": 110,
+        "mp": 60,
+        "attack_damage": 60,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.75
+      },
+      "2": {
+        "max_hp": 1350,
+        "max_mp": 110,
+        "mp": 60,
+        "attack_damage": 108,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.75
+      },
+      "3": {
+        "max_hp": 2430,
+        "max_mp": 110,
+        "mp": 60,
+        "attack_damage": 194.4,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.75
+      }
+    }
   },
   {
     "name": "Kalista",
@@ -161,7 +773,43 @@
     "traits": [
       "Cultist",
       "Duelist"
-    ]
+    ],
+    "skill": "Rend",
+    "stat": {
+      "1": {
+        "max_hp": 650,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 65,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 1
+      },
+      "2": {
+        "max_hp": 1170,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 117,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 1
+      },
+      "3": {
+        "max_hp": 2106,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 210.6,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 1
+      }
+    }
   },
   {
     "name": "Katarina",
@@ -171,7 +819,43 @@
       "Warlord",
       "Fortune",
       "Set4_Assassin"
-    ]
+    ],
+    "skill": "Death Lotus",
+    "stat": {
+      "1": {
+        "max_hp": 500,
+        "max_mp": 90,
+        "mp": 0,
+        "attack_damage": 65,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 900,
+        "max_mp": 90,
+        "mp": 0,
+        "attack_damage": 117,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 1620,
+        "max_mp": 90,
+        "mp": 0,
+        "attack_damage": 210.6,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Kayle",
@@ -180,7 +864,43 @@
     "traits": [
       "Divine",
       "Set4_Executioner"
-    ]
+    ],
+    "skill": "Divine Ascension",
+    "stat": {
+      "1": {
+        "max_hp": 650,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 75,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.9
+      },
+      "2": {
+        "max_hp": 1170,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 135,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.9
+      },
+      "3": {
+        "max_hp": 2106,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 243,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.9
+      }
+    }
   },
   {
     "name": "Kennen",
@@ -189,7 +909,43 @@
     "traits": [
       "Set4_Ninja",
       "Keeper"
-    ]
+    ],
+    "skill": "Slicing Maelstrom",
+    "stat": {
+      "1": {
+        "max_hp": 650,
+        "max_mp": 125,
+        "mp": 50,
+        "attack_damage": 60,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 30,
+        "magic_resistance": 30,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 1170,
+        "max_mp": 125,
+        "mp": 50,
+        "attack_damage": 108,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 30,
+        "magic_resistance": 30,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 2106,
+        "max_mp": 125,
+        "mp": 50,
+        "attack_damage": 194.4,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 30,
+        "magic_resistance": 30,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Kindred",
@@ -198,7 +954,43 @@
     "traits": [
       "Set4_Spirit",
       "Set4_Executioner"
-    ]
+    ],
+    "skill": "Dance of Dread",
+    "stat": {
+      "1": {
+        "max_hp": 650,
+        "max_mp": 35,
+        "mp": 0,
+        "attack_damage": 70,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.8
+      },
+      "2": {
+        "max_hp": 1170,
+        "max_mp": 35,
+        "mp": 0,
+        "attack_damage": 126,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.8
+      },
+      "3": {
+        "max_hp": 2106,
+        "max_mp": 35,
+        "mp": 0,
+        "attack_damage": 226.8,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.8
+      }
+    }
   },
   {
     "name": "Lee Sin",
@@ -207,7 +999,43 @@
     "traits": [
       "Divine",
       "Duelist"
-    ]
+    ],
+    "skill": "God Fist",
+    "stat": {
+      "1": {
+        "max_hp": 1000,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 60,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.85
+      },
+      "2": {
+        "max_hp": 1800,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 108,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.85
+      },
+      "3": {
+        "max_hp": 3240,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 194.4,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.85
+      }
+    }
   },
   {
     "name": "Lulu",
@@ -216,7 +1044,43 @@
     "traits": [
       "Set4_Elderwood",
       "Set4_Mage"
-    ]
+    ],
+    "skill": "Wild Growth",
+    "stat": {
+      "1": {
+        "max_hp": 1620,
+        "max_mp":140,
+        "mp": 75,
+        "attack_damage": 162,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.6
+      },
+      "2": {
+        "max_hp": 900,
+        "max_mp":140,
+        "mp": 75,
+        "attack_damage": 90,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.6
+      },
+      "3": {
+        "max_hp": 1620,
+        "max_mp":140,
+        "mp": 75,
+        "attack_damage": 162,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.6
+      }
+    }
   },
   {
     "name": "Maokai",
@@ -225,7 +1089,43 @@
     "traits": [
       "Set4_Elderwood",
       "Set4_Brawler"
-    ]
+    ],
+    "skill": "Bramble Smash",
+    "stat": {
+      "1": {
+        "max_hp": 700,
+        "max_mp": 75,
+        "mp": 0,
+        "attack_damage": 55,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.5
+      },
+      "2": {
+        "max_hp": 1260,
+        "max_mp": 75,
+        "mp": 0,
+        "attack_damage": 99,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.5
+      },
+      "3": {
+        "max_hp": 2268,
+        "max_mp": 75,
+        "mp": 0,
+        "attack_damage": 178.2,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.5
+      }
+    }
   },
   {
     "name": "Morgana",
@@ -234,7 +1134,43 @@
     "traits": [
       "Set4_Enlightened",
       "Set4_Syphoner"
-    ]
+    ],
+    "skill": "Hallowed Ground",
+    "stat": {
+      "1": {
+        "max_hp": 850,
+        "max_mp": 120,
+        "mp": 60,
+        "attack_damage": 50,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.7
+      },
+      "2": {
+        "max_hp": 1530,
+        "max_mp": 120,
+        "mp": 60,
+        "attack_damage": 90,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.7
+      },
+      "3": {
+        "max_hp": 2754,
+        "max_mp": 120,
+        "mp": 60,
+        "attack_damage": 162,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.7
+      }
+    }
   },
   {
     "name": "Nasus",
@@ -243,7 +1179,43 @@
     "traits": [
       "Divine",
       "Set4_Syphoner"
-    ]
+    ],
+    "skill": "Wither",
+    "stat": {
+      "1": {
+        "max_hp": 650,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 45,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 1170,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 81,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 2106,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 145.8,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Nautilus",
@@ -252,7 +1224,43 @@
     "traits": [
       "Set4_Fabled",
       "Set4_Vanguard"
-    ]
+    ],
+    "skill": "Impact Crater",
+    "stat": {
+      "1": {
+        "max_hp": 750,
+        "max_mp": 150,
+        "mp": 85,
+        "attack_damage": 55,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 55,
+        "magic_resistance": 40,
+        "attack_speed": 0.6
+      },
+      "2": {
+        "max_hp": 1350,
+        "max_mp": 150,
+        "mp": 85,
+        "attack_damage": 99,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 55,
+        "magic_resistance": 40,
+        "attack_speed": 0.6
+      },
+      "3": {
+        "max_hp": 2430,
+        "max_mp": 150,
+        "mp": 85,
+        "attack_damage": 178.2,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 55,
+        "magic_resistance": 40,
+        "attack_speed": 0.6
+      }
+    }
   },
   {
     "name": "Neeko",
@@ -261,7 +1269,43 @@
     "traits": [
       "Set4_Fabled",
       "Set4_Mystic"
-    ]
+    ],
+    "skill": "Blooming Burst",
+    "stat": {
+      "1": {
+        "max_hp": 700,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 45,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.75
+      },
+      "2": {
+        "max_hp": 1260,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 81,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.75
+      },
+      "3": {
+        "max_hp": 2268,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 145.8,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.75
+      }
+    }
   },
   {
     "name": "Nidalee",
@@ -270,7 +1314,43 @@
     "traits": [
       "Warlord",
       "Sharpshooter"
-    ]
+    ],
+    "skill": "Javelin Toss",
+    "stat": {
+      "1": {
+        "max_hp": 550,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 45,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.7
+      },
+      "2": {
+        "max_hp": 990,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 81,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.7
+      },
+      "3": {
+        "max_hp": 1782,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 145.8,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.7
+      }
+    }
   },
   {
     "name": "Nunu & Willump",
@@ -279,7 +1359,43 @@
     "traits": [
       "Set4_Elderwood",
       "Set4_Brawler"
-    ]
+    ],
+    "skill": "Consume",
+    "stat": {
+      "1": {
+        "max_hp": 750,
+        "max_mp": 85,
+        "mp": 0,
+        "attack_damage": 65,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 30,
+        "attack_speed": 0.55
+      },
+      "2": {
+        "max_hp": 1350,
+        "max_mp": 85,
+        "mp": 0,
+        "attack_damage": 117,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 30,
+        "attack_speed": 0.55
+      },
+      "3": {
+        "max_hp": 2430,
+        "max_mp": 85,
+        "mp": 0,
+        "attack_damage": 210.6,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 30,
+        "attack_speed": 0.55
+      }
+    }
   },
   {
     "name": "Olaf",
@@ -288,7 +1404,43 @@
     "traits": [
       "Set4_Dragonsoul",
       "Set4_Slayer"
-    ]
+    ],
+    "skill": "Ragnarok",
+    "stat": {
+      "1": {
+        "max_hp": 900,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 85,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.8
+      },
+      "2": {
+        "max_hp": 1620,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 153,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.8
+      },
+      "3": {
+        "max_hp": 2916,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 275.4,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.8
+      }
+    }
   },
   {
     "name": "Ornn",
@@ -298,7 +1450,43 @@
       "Set4_Elderwood",
       "Set4_Vanguard",
       "Set4_Blacksmith"
-    ]
+    ],
+    "skill": "Stampede",
+    "stat": {
+      "1": {
+        "max_hp": 900,
+        "max_mp": 160,
+        "mp": 80,
+        "attack_damage": 100,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 50,
+        "attack_speed": 0.55
+      },
+      "2": {
+        "max_hp": 1620,
+        "max_mp": 160,
+        "mp": 80,
+        "attack_damage": 180,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 50,
+        "attack_speed": 0.55
+      },
+      "3": {
+        "max_hp": 2916,
+        "max_mp": 160,
+        "mp": 80,
+        "attack_damage": 324,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 50,
+        "attack_speed": 0.55
+      }
+    }
   },
   {
     "name": "Pyke",
@@ -308,7 +1496,43 @@
       "Cultist",
       "Set4_Assassin",
       "Set4_Slayer"
-    ]
+    ],
+    "skill": "Phantom Undertow",
+    "stat": {
+      "1": {
+        "max_hp": 700,
+        "max_mp": 120,
+        "mp": 60,
+        "attack_damage": 50,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 30,
+        "attack_speed": 0.6
+      },
+      "2": {
+        "max_hp": 1260,
+        "max_mp": 120,
+        "mp": 60,
+        "attack_damage": 90,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 30,
+        "attack_speed": 0.6
+      },
+      "3": {
+        "max_hp": 2268,
+        "max_mp": 120,
+        "mp": 60,
+        "attack_damage": 162,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 50,
+        "magic_resistance": 30,
+        "attack_speed": 0.6
+      }
+    }
   },
   {
     "name": "Rakan",
@@ -317,7 +1541,43 @@
     "traits": [
       "Set4_Elderwood",
       "Keeper"
-    ]
+    ],
+    "skill": "Disarming Diversion",
+    "stat": {
+      "1": {
+        "max_hp": 600,
+        "max_mp": 120,
+        "mp": 60,
+        "attack_damage": 60,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.7
+      },
+      "2": {
+        "max_hp": 1080,
+        "max_mp": 120,
+        "mp": 60,
+        "attack_damage": 108,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.7
+      },
+      "3": {
+        "max_hp": 1944,
+        "max_mp": 120,
+        "mp": 60,
+        "attack_damage": 194.4,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.7
+      }
+    }
   },
   {
     "name": "Samira",
@@ -327,7 +1587,43 @@
       "Set4_Daredevil",
       "Sharpshooter",
       "Set4_Slayer"
-    ]
+    ],
+    "skill": "Inferno Trigger",
+    "stat": {
+      "1": {
+        "max_hp": 900,
+        "max_mp": 4,
+        "mp": 0,
+        "attack_damage": 65,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 30,
+        "magic_resistance": 30,
+        "attack_speed": 0.85
+      },
+      "2": {
+        "max_hp": 1620,
+        "max_mp": 4,
+        "mp": 0,
+        "attack_damage": 117,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 30,
+        "magic_resistance": 30,
+        "attack_speed": 0.85
+      },
+      "3": {
+        "max_hp": 2916,
+        "max_mp": 4,
+        "mp": 0,
+        "attack_damage": 210.6,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 30,
+        "magic_resistance": 30,
+        "attack_speed": 0.85
+      }
+    }
   },
   {
     "name": "Sejuani",
@@ -336,7 +1632,43 @@
     "traits": [
       "Fortune",
       "Set4_Vanguard"
-    ]
+    ],
+    "skill": "Firecracker",
+    "stat": {
+      "1": {
+        "max_hp": 850,
+        "max_mp":160,
+        "mp": 80,
+        "attack_damage": 45,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 40,
+        "attack_speed": 0.55
+      },
+      "2": {
+        "max_hp": 1530,
+        "max_mp":160,
+        "mp": 80,
+        "attack_damage": 81,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 40,
+        "attack_speed": 0.55
+      },
+      "3": {
+        "max_hp": 2754,
+        "max_mp":160,
+        "mp": 80,
+        "attack_damage": 145.8,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 40,
+        "attack_speed": 0.55
+      }
+    }
   },
   {
     "name": "Sett",
@@ -345,7 +1677,43 @@
     "traits": [
       "Boss",
       "Set4_Brawler"
-    ]
+    ],
+    "skill": "Showstopper",
+    "stat": {
+      "1": {
+        "max_hp": 1100,
+        "max_mp": 175,
+        "mp": 100,
+        "attack_damage": 60,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 30,
+        "attack_speed": 0.75
+      },
+      "2": {
+        "max_hp": 1980,
+        "max_mp": 175,
+        "mp": 100,
+        "attack_damage": 108,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 30,
+        "attack_speed": 0.75
+      },
+      "3": {
+        "max_hp": 3564,
+        "max_mp": 175,
+        "mp": 100,
+        "attack_damage": 194.4,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 30,
+        "attack_speed": 0.75
+      }
+    }
   },
   {
     "name": "Shen",
@@ -355,7 +1723,43 @@
       "Set4_Ninja",
       "Set4_Adept",
       "Set4_Mystic"
-    ]
+    ],
+    "skill": "Shadow Dash",
+    "stat": {
+      "1": {
+        "max_hp": 950,
+        "max_mp": 100,
+        "mp": 50,
+        "attack_damage": 60,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 1710,
+        "max_mp": 100,
+        "mp": 50,
+        "attack_damage": 108,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 3078,
+        "max_mp": 100,
+        "mp": 50,
+        "attack_damage": 194.4,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 40,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Shyvana",
@@ -364,7 +1768,43 @@
     "traits": [
       "Set4_Dragonsoul",
       "Set4_Brawler"
-    ]
+    ],
+    "skill": "Dragon's Descent",
+    "stat": {
+      "1": {
+        "max_hp": 700,
+        "max_mp": 75,
+        "mp": 0,
+        "attack_damage": 70,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 30,
+        "magic_resistance": 60,
+        "attack_speed": 0.75
+      },
+      "2": {
+        "max_hp": 1260,
+        "max_mp": 75,
+        "mp": 0,
+        "attack_damage": 126,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 30,
+        "magic_resistance": 60,
+        "attack_speed": 0.75
+      },
+      "3": {
+        "max_hp": 2268,
+        "max_mp": 75,
+        "mp": 0,
+        "attack_damage": 226.8,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 30,
+        "magic_resistance": 60,
+        "attack_speed": 0.75
+      }
+    }
   },
   {
     "name": "Sivir",
@@ -373,7 +1813,43 @@
     "traits": [
       "Cultist",
       "Sharpshooter"
-    ]
+    ],
+    "skill": "On the Hunt",
+    "stat": {
+      "1": {
+        "max_hp": 650,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 70,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      },
+      "2": {
+        "max_hp": 1170,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 126,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      },
+      "3": {
+        "max_hp": 2106,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 226.8,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      }
+    }
   },
   {
     "name": "Swain",
@@ -382,7 +1858,43 @@
     "traits": [
       "Set4_Dragonsoul",
       "Set4_Syphoner"
-    ]
+    ],
+    "skill": "Draconic Ascension",
+    "stat": {
+      "1": {
+        "max_hp": 1000,
+        "max_mp": 100,
+        "mp": 40,
+        "attack_damage": 60,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 80,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 1800,
+        "max_mp": 100,
+        "mp": 40,
+        "attack_damage": 108,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 80,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 3240,
+        "max_mp": 100,
+        "mp": 40,
+        "attack_damage": 194.4,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 80,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Tahm Kench",
@@ -391,7 +1903,43 @@
     "traits": [
       "Fortune",
       "Set4_Brawler"
-    ]
+    ],
+    "skill": "Thick Skin",
+    "stat": {
+      "1": {
+        "max_hp": 700,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 85,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.5
+      },
+      "2": {
+        "max_hp": 1260,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 153,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.5
+      },
+      "3": {
+        "max_hp": 2268,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 275.4,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.5
+      }
+    }
   },
   {
     "name": "Talon",
@@ -400,7 +1948,43 @@
     "traits": [
       "Set4_Enlightened",
       "Set4_Assassin"
-    ]
+    ],
+    "skill": "Truestrike",
+    "stat": {
+      "1": {
+        "max_hp": 800,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 95,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.8
+      },
+      "2": {
+        "max_hp": 1440,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 171,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.8
+      },
+      "3": {
+        "max_hp": 2592,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 307.8,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 30,
+        "magic_resistance": 20,
+        "attack_speed": 0.8
+      }
+    }
   },
   {
     "name": "Teemo",
@@ -409,7 +1993,43 @@
     "traits": [
       "Set4_Spirit",
       "Sharpshooter"
-    ]
+    ],
+    "skill": "Sporecloud Dart",
+    "stat": {
+      "1": {
+        "max_hp": 500,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 55,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.7
+      },
+      "2":{
+        "max_hp": 900,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 99,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.7
+      },
+      "3":{
+        "max_hp": 1620,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 178.2,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.7
+      }
+    }
   },
   {
     "name": "Tristana",
@@ -418,7 +2038,43 @@
     "traits": [
       "Set4_Dragonsoul",
       "Sharpshooter"
-    ]
+    ],
+    "skill": "Rapid Fire",
+    "stat": {
+      "1": {
+        "max_hp": 500,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 50,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 20,
+        "magic_resistance": 40,
+        "attack_speed": 0.7
+      },
+      "2": {
+        "max_hp": 900,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 90,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 20,
+        "magic_resistance": 40,
+        "attack_speed": 0.7
+      },
+      "3": {
+        "max_hp": 1620,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 162,
+        "spell_power": 100,
+        "range": 4,
+        "armor": 20,
+        "magic_resistance": 40,
+        "attack_speed": 0.7
+      }
+    }
   },
   {
     "name": "Tryndamere",
@@ -428,7 +2084,43 @@
       "Warlord",
       "Set4_Slayer",
       "Duelist"
-    ]
+    ],
+    "skill": "Spinning Slash",
+    "stat": {
+      "1": {
+        "max_hp": 850,
+        "max_mp": 100,
+        "mp": 60,
+        "attack_damage": 85,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.85
+      },
+      "2": {
+        "max_hp": 1530,
+        "max_mp": 100,
+        "mp": 60,
+        "attack_damage": 153,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.85
+      },
+      "3": {
+        "max_hp": 2754,
+        "max_mp": 100,
+        "mp": 60,
+        "attack_damage": 275.4,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 60,
+        "magic_resistance": 60,
+        "attack_speed": 0.85
+      }
+    }
   },
   {
     "name": "Twisted Fate",
@@ -437,7 +2129,43 @@
     "traits": [
       "Cultist",
       "Set4_Mage"
-    ]
+    ],
+    "skill": "Wild Cards",
+    "stat": {
+      "1": {
+        "max_hp": 550,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 45,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 990,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 81,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 1782,
+        "max_mp": 70,
+        "mp": 0,
+        "attack_damage": 145.8,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Veigar",
@@ -446,7 +2174,43 @@
     "traits": [
       "Set4_Elderwood",
       "Set4_Mage"
-    ]
+    ],
+    "skill": "Dark Blossom",
+    "stat": {
+      "1": {
+        "max_hp": 600,
+        "max_mp": 55,
+        "mp": 0,
+        "attack_damage": 40,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 1080,
+        "max_mp": 55,
+        "mp": 0,
+        "attack_damage": 72,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 1944,
+        "max_mp": 55,
+        "mp": 0,
+        "attack_damage": 129.6,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Vi",
@@ -455,7 +2219,43 @@
     "traits": [
       "Warlord",
       "Set4_Brawler"
-    ]
+    ],
+    "skill": "Denting Blow",
+    "stat": {
+      "1": {
+        "max_hp": 700,
+        "max_mp": 50,
+        "mp": 0,
+        "attack_damage": 65,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.6
+      },
+      "2": {
+        "max_hp": 1260,
+        "max_mp": 50,
+        "mp": 0,
+        "attack_damage": 117,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.6
+      },
+      "3": {
+        "max_hp": 2268,
+        "max_mp": 50,
+        "mp": 0,
+        "attack_damage": 210.6,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.6
+      }
+    }
   },
   {
     "name": "Vladimir",
@@ -464,7 +2264,43 @@
     "traits": [
       "Cultist",
       "Set4_Syphoner"
-    ]
+    ],
+    "skill": "Transfusion",
+    "stat": {
+      "1": {
+        "max_hp": 750,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 40,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.6
+      },
+      "2": {
+        "max_hp": 1350,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 72,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.6
+      },
+      "3": {
+        "max_hp": 2430,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 129.6,
+        "spell_power": 100,
+        "range": 2,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.6
+      }
+    }
   },
   {
     "name": "Wukong",
@@ -473,7 +2309,43 @@
     "traits": [
       "Divine",
       "Set4_Vanguard"
-    ]
+    ],
+    "skill": "Crushing Blow",
+    "stat": {
+      "1": {
+        "max_hp": 650,
+        "max_mp": 50,
+        "mp": 0,
+        "attack_damage": 55,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.65
+      },
+      "2": {
+        "max_hp": 1170,
+        "max_mp": 50,
+        "mp": 0,
+        "attack_damage": 99,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.65
+      },
+      "3": {
+        "max_hp": 2106,
+        "max_mp": 50,
+        "mp": 0,
+        "attack_damage": 178.2,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 30,
+        "attack_speed": 0.65
+      }
+    }
   },
   {
     "name": "Xayah",
@@ -483,7 +2355,43 @@
       "Set4_Elderwood",
       "Set4_Executioner",
       "Keeper"
-    ]
+    ],
+    "skill": "Featherstorm",
+    "stat": {
+      "1": {
+        "max_hp": 600,
+        "max_mp": 130,
+        "mp": 70,
+        "attack_damage": 80,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      },
+      "2": {
+        "max_hp": 1080,
+        "max_mp": 130,
+        "mp": 70,
+        "attack_damage": 144,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      },
+      "3": {
+        "max_hp": 1944,
+        "max_mp": 130,
+        "mp": 70,
+        "attack_damage": 259.2,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.85
+      }
+    }
   },
   {
     "name": "Yasuo",
@@ -505,7 +2413,7 @@
         "armor": 30,
         "magic_resistance": 20,
         "attack_speed": 0.7
-        },
+      },
       "2": {
         "max_hp": 990,
         "max_mp": 45,
@@ -516,7 +2424,7 @@
         "armor": 30,
         "magic_resistance": 20,
         "attack_speed": 0.7
-        },
+      },
       "3": {
         "max_hp": 1782,
         "max_mp": 45,
@@ -527,9 +2435,9 @@
         "armor": 30,
         "magic_resistance": 20,
         "attack_speed": 0.7
-        }
       }
-    },
+    }
+  },
   {
     "name": "Yone",
     "championId": "TFT4_Yone",
@@ -537,7 +2445,43 @@
     "traits": [
       "Set4_Exile",
       "Set4_Adept"
-    ]
+    ],
+    "skill": "Seal Fate",
+    "stat": {
+      "1": {
+        "max_hp": 950,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 80,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.95
+      },
+      "2": {
+        "max_hp": 1710,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 144,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.95
+      },
+      "3": {
+        "max_hp": 3078,
+        "max_mp": 60,
+        "mp": 0,
+        "attack_damage": 259.2,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.95
+      }
+    }
   },
   {
     "name": "Yuumi",
@@ -546,7 +2490,43 @@
     "traits": [
       "Set4_Spirit",
       "Set4_Mystic"
-    ]
+    ],
+    "skill": "Zoomies",
+    "stat": {
+      "1": {
+        "max_hp": 650,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 40,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.6
+      },
+      "2": {
+        "max_hp": 1170,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 72,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.6
+      },
+      "3": {
+        "max_hp": 2106,
+        "max_mp": 40,
+        "mp": 0,
+        "attack_damage": 129.6,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.6
+      }
+    }
   },
   {
     "name": "Zed",
@@ -555,7 +2535,43 @@
     "traits": [
       "Set4_Ninja",
       "Set4_Slayer"
-    ]
+    ],
+    "skill": "Contempt for the Weak",
+    "stat": {
+      "1": {
+        "max_hp": 650,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 55,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.75
+      },
+      "2": {
+        "max_hp": 1170,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 99,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.75
+      },
+      "3": {
+        "max_hp": 2106,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 178.2,
+        "spell_power": 100,
+        "range": 1,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.75
+      }
+    }
   },
   {
     "name": "Zilean",
@@ -564,12 +2580,95 @@
     "traits": [
       "Cultist",
       "Set4_Mystic"
-    ]
+    ],
+    "skill": "Rewind Fate",
+    "stat": {
+      "1": {
+        "max_hp": 750,
+        "max_mp": 150,
+        "mp": 100,
+        "attack_damage": 45,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.75
+      },
+      "2": {
+        "max_hp": 1350,
+        "max_mp": 150,
+        "mp": 100,
+        "attack_damage": 81,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.75
+      },
+      "3": {
+        "max_hp": 2430,
+        "max_mp": 150,
+        "mp": 100,
+        "attack_damage": 145.8,
+        "spell_power": 100,
+        "range": 3,
+        "armor": 20,
+        "magic_resistance": 20,
+        "attack_speed": 0.75
+      }
+    }
   },
   {
     "name": "Target Dummy",
     "championId": "TFT_TrainingDummy",
     "cost": 2,
-    "traits": []
+    "traits": [],
+    "skill": "On Duty!",
+    "stat": {
+      "1": {
+        "max_hp": 700,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 0,
+        "spell_power": 100,
+        "range": 0,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.2
+      },
+      "2": {
+        "max_hp": 1260,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 0,
+        "spell_power": 100,
+        "range": 0,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.2
+      },
+      "3": {
+        "max_hp": 2268,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 0,
+        "spell_power": 100,
+        "range": 0,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.2
+      },
+      "4": {
+        "max_hp": 4082.4,
+        "max_mp": 0,
+        "mp": 0,
+        "attack_damage": 0,
+        "spell_power": 100,
+        "range": 0,
+        "armor": 40,
+        "magic_resistance": 40,
+        "attack_speed": 0.2
+      }
+    }
   }
 ]
