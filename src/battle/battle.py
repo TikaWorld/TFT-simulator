@@ -82,7 +82,6 @@ class Battle:
             for t in self.trait[team].values():
                 t.activate(self.champion[team])
                 team.trait[t.type.value] = t.get_active_count()
-        print(self.get_current())
 
     def start(self):
         self.init()
@@ -92,4 +91,7 @@ class Battle:
         for c in champions:
             c.cause_event(EventType.BATTLE_START)
             self.env.process(self.action.action(c))
-        self.env.run(until=15)
+        field = self.get_current()
+        self.env.run(until=45)
+
+        return {"log": self.log, "field": field}

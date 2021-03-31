@@ -8,7 +8,8 @@ from battle.action import search
 from functools import wraps
 import random
 
-from battle.exception.field import AlreadyExistChampion
+from battle.exception.field import AlreadyExistChampion, StuckChampion
+from battle.exception.skill import CancelSkillCasting
 from battle.logger import LOGGER, make_battle_record
 from battle.skill import SKILL
 
@@ -96,11 +97,13 @@ class ChampionAction:
 
     @set_break_status([State.STUN, State.AIRBORNE, State.BANISHES, State.ROOT, State.DEATH])
     def move(self, champion: Champion) -> simpy.events.ProcessGenerator:
+        yield self.env.timeout(0)
         current_cell = self.field.get_location(champion)
-        path: search.Path = search.get_path(current_cell, champion.target)
+        try:
+            path: search.Path = search.get_path(current_cell, champion.target)
+        except StuckChampion:
+            return
         heist = champion.get_stat(Stat.HEIST)
-        if not path:
-            raise Exception
         LOGGER[self.env].info(make_battle_record(self.env.now, "MOVE", dict(champion),
                                                  start_cell=current_cell.id, target_cell=path[0].id, heist=heist))
 
@@ -139,8 +142,12 @@ class ChampionAction:
         skill = SKILL[champion.skill]
         if not skill or not skill.chk_condition(champion):
             yield self.env.timeout(0)
-            champion.mp = 0
             return
         print(f'{champion}: Champion is cast at {self.env.now:f}')
-        yield self.field.env.process(skill(self.field).cast(champion))
+        try:
+            champion.action = self.field.env.process(skill(self.field).cast(champion))
+            yield champion.action
+        except CancelSkillCasting:
+            yield self.env.timeout(0)
+            return
         champion.mp = 0

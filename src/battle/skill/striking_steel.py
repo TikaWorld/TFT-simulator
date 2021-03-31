@@ -6,6 +6,7 @@ from .skill import Skill
 from ..construct import Damage, Champion
 from ..construct.enum import DamageType, Stat, EventType
 from ..construct.field import Cell
+from ..exception.skill import CancelSkillCasting
 from ..logger import LOGGER, make_battle_record
 
 
@@ -36,13 +37,16 @@ class StrikingSteel(Skill):
         target_cell = self.field.champion_location[champion.target]
         casting = self.get_casting_pos(caster_cell, target_cell)
 
+        if casting is None:
+            raise CancelSkillCasting
+
         casting_cell = casting[0]
         target_cells = casting[1:]
         if casting_cell is not caster_cell:
             LOGGER[self.field.env].info(make_battle_record(self.field.env.now, "MOVE", dict(champion),
                                                            start_cell=caster_cell.id, target_cell=casting_cell.id))
-            yield self.field.env.timeout(0.1)
             self.field.transfer(champion, casting_cell)
+            yield self.field.env.timeout(0.1)
             LOGGER[self.field.env].info(make_battle_record(self.field.env.now, "ARRIVED", dict(champion),
                                                            start_cell=caster_cell.id, target_cell=casting_cell.id))
 
@@ -74,12 +78,11 @@ class StrikingSteel(Skill):
 
         if casting_pos[0] == target_pos[0]:
             extra_pos[0] = target_pos[0]
-            extra_pos[1] = target_pos[1] + 1 if casting_pos[1] < target_pos[1] else target_pos[0] - 1
+            extra_pos[1] = target_pos[1] + 1 if casting_pos[1] < target_pos[1] else target_pos[1] - 1
         else:
             is_odd = target_pos[0] % 2
             extra_pos[0] = target_pos[0] + 1 if casting_pos[0] < target_pos[0] else target_pos[0] - 1
             extra_pos[1] = casting_pos[1] - 1 if target_pos[1] + is_odd == casting_pos[1] else casting_pos[1] + 1
-
         extra_cell = self.field.get_cell(extra_pos)
         result.append(extra_cell) if extra_cell else None
 

@@ -1,0 +1,2 @@
+class CancelSkillCasting(Exception):
+    pass

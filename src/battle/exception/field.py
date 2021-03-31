@@ -4,3 +4,7 @@ class AlreadyExistChampion(Exception):
 
 class NotExistChampion(Exception):
     pass
+
+
+class StuckChampion(Exception):
+    pass

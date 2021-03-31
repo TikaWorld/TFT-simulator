@@ -38,4 +38,6 @@ class Ninja(Trait):
         for champion in self.get_trait_champions(champions):
             buff = self.get_buff()
             if buff:
-                self.state_manager.put_buff(champion, Stat.MAGIC_RESISTANCE, buff)
+                self.state_manager.put_buff(champion, Stat.ATTACK, buff)
+                self.state_manager.put_buff(champion, Stat.SPELL, buff)
+

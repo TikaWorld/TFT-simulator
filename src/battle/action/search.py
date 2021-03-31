@@ -4,6 +4,7 @@ from typing import Tuple, List, Union
 from battle.construct.enum import State
 from battle.construct import Champion
 from battle.construct.field import Cell
+from battle.exception.field import StuckChampion
 
 Path = List[Cell]
 TargetList = List[Cell]
@@ -73,8 +74,7 @@ def get_path(cur: Cell, champion: Champion) -> Union[Path, None]:
         path: Path = r[1]
         if target.champion == champion:
             return path
-
-    return None
+    raise StuckChampion
 
 
 def _bfs_champion_search(node: Cell, conflict=True) -> List[SearchResult]:

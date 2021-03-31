@@ -7,7 +7,6 @@ def make_battle_logger(env, log):
     logger = logging.getLogger(str(env))
     handler = ListHandler(log)
     logger.addHandler(handler)
-    logger.addHandler(logging.StreamHandler())
     logger.setLevel(logging.INFO)
     LOGGER[env] = logger
 
@@ -29,5 +28,5 @@ class ListHandler(logging.Handler):
         self.log = log
 
     def emit(self, record: logging.LogRecord) -> None:
-        self.log.append(json.dumps(record.msg))
+        self.log.append(record.msg)
         self.flush()
