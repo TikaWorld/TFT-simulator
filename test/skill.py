@@ -1,10 +1,14 @@
+import simpy
+
 from battle.construct import Field, Champion, Team
 from battle.skill.javelin_toss import JavelinToss
-from battle.skill.skill import Projectile
 
 champ_data = {
     "name": "Dummy",
-    "trait": ["Duelist"],
+    "championId": "Dummy",
+    "level": 1,
+    "traits": ["Duelist"],
+    "uuid": "test",
     "skill": "",
     "max_hp": 1000,
     "max_mp": 100,
@@ -19,12 +23,14 @@ champ_data = {
     "magic_resistance": 100,
     "attack_speed": 1,
     "dodge_chance": 0,
-    "damage_reduce": 0
+    "damage_reduce": 0,
+    "damage_increase": 0
 }
 
 
 def test_projectile():
-    field = Field()
+    env = simpy.Environment()
+    field = Field(env)
     team_1 = Team()
     team_2 = Team()
     a = Champion(champ_data, team_1)

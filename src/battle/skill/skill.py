@@ -1,7 +1,7 @@
 import math
 import numpy
 
-from battle.construct.field import pos_convert, pivot_convert
+from battle.hex import hex_to_pixel, pixel_to_hex
 
 
 class Skill:
@@ -19,8 +19,8 @@ class Skill:
 
 class Projectile:
     def __init__(self, c_pos, t_pos, heist):
-        caster_pos = pivot_convert(c_pos)
-        target_pos = pivot_convert(t_pos)
+        caster_pos = hex_to_pixel(c_pos[0], c_pos[1])
+        target_pos = hex_to_pixel(t_pos[0], t_pos[1])
 
         self.heist = heist
         self.slope = [target_pos[0] - caster_pos[0], target_pos[1] - caster_pos[1]]
@@ -36,9 +36,8 @@ class Projectile:
         return slope[0] / p, slope[1] / p
 
     def get_pos(self):
-        converted_pos = pos_convert([self.displacement[0]+self.start_pos[0], self.displacement[1]+self.start_pos[1]],
-                                    self.start_pos)
-        return [int(converted_pos[0]), int(converted_pos[1])]
+        converted_pos = pixel_to_hex(self.displacement[0]+self.start_pos[0], self.displacement[1]+self.start_pos[1])
+        return converted_pos
 
     def tick(self, second):
         r = []

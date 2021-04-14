@@ -6,26 +6,6 @@ if TYPE_CHECKING:
     from . import Champion
 
 
-def pos_convert(pos, pivot_pos):
-    result = [pos[0], pos[1]+0.5]
-    if int(pivot_pos[0]) % 2:
-        if not int(pos[0]) % 2:
-            result = [result[0], result[1] + 0.5]
-    else:
-        if int(pos[0]) % 2:
-            result = [result[0], result[1] - 0.5]
-
-    return result
-
-
-def pivot_convert(pos):
-    result = pos
-    if int(pos[0]) % 2:
-        result = [pos[0], pos[1] + 0.5]
-
-    return result
-
-
 class Cell:
     def __init__(self, i, pos):
         self.champion: Union[Champion, None] = None
