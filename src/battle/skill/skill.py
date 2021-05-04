@@ -25,7 +25,7 @@ class Projectile:
         self.heist = heist
         self.slope = [target_pos[0] - caster_pos[0], target_pos[1] - caster_pos[1]]
         self.accel = self.get_accel(self.slope)
-        self.start_pos = c_pos
+        self.start_pos = caster_pos
         self.displacement = [0, 0]
         self.alive = True
 
@@ -47,6 +47,7 @@ class Projectile:
             collided_pos = self.get_pos()
             if collided_pos not in r:
                 r.append(collided_pos)
+        print(r)
         return r
 
     def collide(self, champion, target):

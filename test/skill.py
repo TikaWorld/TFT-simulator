@@ -41,8 +41,8 @@ def test_projectile():
     b.name = "b"
     c.name = "c"
 
-    field.assign(a, [0, 1])
-    field.assign(b, [7, 0])
+    field.assign(a, [0, 0])
+    field.assign(b, [5, 6])
 
     a.target = b
 
